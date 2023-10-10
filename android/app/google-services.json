@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "884317191860",
+    "project_id": "addvisor-f7c02",
+    "storage_bucket": "addvisor-f7c02.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:884317191860:android:ba82735daff4bf7a1b21e1",
+        "android_client_info": {
+          "package_name": "com.group_1.addvisor"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8GiVbNbgamL4at36yHCX2bszitozHRmQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
