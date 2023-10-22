@@ -86,7 +86,7 @@ class _TrackerScreenState extends State<TrackerScreen> {
                   //settings code
                   break;
                 case 1:
-                  //tasks nav
+                  Navigator.pushNamed(context, "/tasks");
                   break;
                 case 2:
                   Navigator.pushNamed(context, "/home");

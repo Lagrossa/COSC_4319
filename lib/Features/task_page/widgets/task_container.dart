@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:addvisor/task_page/model/task.dart';
-import 'package:addvisor/task_page/constants/colors.dart';
+import 'package:addvisor/Features/task_page/model/task.dart';
+import 'package:addvisor/Features/task_page/constants/colors.dart';
 
 //container to display and interact with tasks
 class taskContainer extends StatelessWidget{

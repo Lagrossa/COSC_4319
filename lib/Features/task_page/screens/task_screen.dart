@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:addvisor/task_page/widgets/task_container.dart';
-import 'package:addvisor/task_page/model/task.dart';
-import 'package:addvisor/task_page/constants/colors.dart';
+import 'package:addvisor/Features/task_page/widgets/task_container.dart';
+import 'package:addvisor/Features/task_page/model/task.dart';
+import 'package:addvisor/Features/task_page/constants/colors.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 
 class taskScreen extends StatefulWidget{
   taskScreen({super.key});
@@ -19,10 +20,10 @@ class _TaskState extends State<taskScreen>{
   Widget build(BuildContext context){
     return Scaffold(
       backgroundColor: taskWhite,
-      appBar: _buildAppBar(),
+      //appBar: _buildAppBar(),
       body: Stack( //main body of screen
         children: [
-          _buildNavButtons(),
+          //_buildNavButtons(),
           Container(
             padding: EdgeInsets.symmetric(
               horizontal: 20,
@@ -141,6 +142,43 @@ class _TaskState extends State<taskScreen>{
             ],),
           ),
         ],
+      ),
+      bottomNavigationBar: Container(
+        color: Colors.black,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+          child: GNav(
+            gap: 8,
+            backgroundColor: Colors.black,
+            activeColor: Colors.blue,
+            color: Colors.white,
+            padding: EdgeInsets.all(16),
+            tabBackgroundColor: Color.fromARGB(255, 31, 30, 30),
+            selectedIndex: 1,
+            onTabChange: (index) {
+              switch (index) {
+                case 0:
+                //settings code
+                  break;
+                case 1:
+                  Navigator.pushNamed(context, "/tasks");
+                  break;
+                case 2:
+                  Navigator.pushNamed(context, "/home");
+                  break;
+                case 3:
+                  Navigator.pushNamed(context, "/trackers");
+                  break;
+              }
+            },
+            tabs: [
+              GButton(icon: Icons.settings, text: "Settings"),
+              GButton(icon: Icons.calendar_month, text: "Tasks"),
+              GButton(icon: Icons.home, text: "Home"),
+              GButton(icon: Icons.watch, text: "Trackers"),
+            ],
+          ),
+        ),
       ),
     );
   }

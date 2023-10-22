@@ -5,6 +5,7 @@ import 'package:addvisor/Features/User_Auth/Presentation/Pages/signUp_screen.dar
 import 'package:addvisor/Features/User_Auth/Presentation/Pages/tracker_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:addvisor/Features/task_page/screens/task_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         '/signUp': (context) => SignUpScreen(),
         '/home': (context) => HomeScreen(),
         '/trackers': (context) => TrackerScreen(),
+        '/tasks' : (context) => taskScreen(),
       },
     );
   }
