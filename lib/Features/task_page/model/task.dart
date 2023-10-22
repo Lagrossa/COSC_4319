@@ -3,10 +3,12 @@ class Task{
   String? id;
   String? taskText;
   bool isDone;
+  int taskPrior;
 
   Task({
     required this.id,
     required this.taskText,
+    required this.taskPrior,
     this.isDone = false,
   });
 
