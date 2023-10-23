@@ -3,6 +3,7 @@ import 'package:addvisor/Features/User_Auth/Presentation/Pages/home_screen.dart'
 import 'package:addvisor/Features/User_Auth/Presentation/Pages/login_screen.dart';
 import 'package:addvisor/Features/User_Auth/Presentation/Pages/signUp_screen.dart';
 import 'package:addvisor/Features/User_Auth/Presentation/Pages/tracker_page.dart';
+import 'package:addvisor/Features/User_Auth/Presentation/Pages/trackers_directory.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:addvisor/Features/task_page/screens/task_screen.dart';
@@ -30,8 +31,9 @@ class MyApp extends StatelessWidget {
         '/login': (context) => LoginScreen(),
         '/signUp': (context) => SignUpScreen(),
         '/home': (context) => HomeScreen(),
-        '/trackers': (context) => TrackerScreen(),
-        '/tasks' : (context) => taskScreen(),
+        '/trackers': (context) => TrackersDirectory(),
+        '/habits': (context) => TrackerScreen(),
+        '/tasks': (context) => taskScreen(),
       },
     );
   }

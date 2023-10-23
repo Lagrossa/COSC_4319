@@ -19,10 +19,9 @@ class HomeScreen extends StatelessWidget {
             children: [
               DrawerHeader(
                 child: Center(
-                  child: Text(
-                    'A D D V I S O R',
-                    style: TextStyle(
-                        fontSize: 30, fontFamily: 'Arial', color: Colors.white),
+                  child: Icon(
+                    Icons.person,
+                    size: 100,
                   ),
                 ),
               ),
@@ -46,7 +45,7 @@ class HomeScreen extends StatelessWidget {
               ),
               ListTile(
                 leading: Icon(Icons.event_repeat),
-                title: Text('Habits'),
+                title: Text('Trackers'),
                 onTap: () {
                   Navigator.pushNamed(context, "/trackers");
                 },

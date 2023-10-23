@@ -14,9 +14,10 @@ class TrackerScreen extends StatefulWidget {
 
 class _TrackerScreenState extends State<TrackerScreen> {
   List habitList = [
+    /* EXAMPLES..
     ["Daily Leetcode", false],
     ["Daily Drawing", false],
-    ["Do Homework", false],
+    ["Do Homework", false],*/
   ];
 
   void tapCheckBox(bool? val, int index) {
@@ -85,6 +86,51 @@ class _TrackerScreenState extends State<TrackerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Habit Tracker"),
+      ),
+      drawer: Drawer(
+        child: Container(
+          color: Colors.blue[600],
+          child: ListView(
+            children: [
+              DrawerHeader(
+                child: Center(
+                  child: Icon(
+                    Icons.person,
+                    size: 100,
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Icon(Icons.home),
+                title: Text('Home Screen'),
+                onTap: () {
+                  Navigator.pushNamed(context, "/home");
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.checklist_sharp),
+                title: Text('Tasks'),
+                onTap: () {
+                  Navigator.pushNamed(context, "/tasks");
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.medical_services_outlined),
+                title: Text('Medication'),
+              ),
+              ListTile(
+                leading: Icon(Icons.event_repeat),
+                title: Text('Trackers'),
+                onTap: () {
+                  Navigator.pushNamed(context, "/trackers");
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
       backgroundColor: Colors.grey[300],
       floatingActionButton: AddTrackerActionButton(
         onPressed: () => createHabit(),
@@ -100,42 +146,6 @@ class _TrackerScreenState extends State<TrackerScreen> {
               deleteTap: (context) => deleteHabit(index),
             );
           }),
-      bottomNavigationBar: Container(
-        color: Colors.black,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-          child: GNav(
-            gap: 8,
-            backgroundColor: Colors.black,
-            activeColor: Colors.blue,
-            color: Colors.white,
-            padding: EdgeInsets.all(16),
-            tabBackgroundColor: Color.fromARGB(255, 31, 30, 30),
-            selectedIndex: 3,
-            onTabChange: (index) {
-              switch (index) {
-                case 0:
-                  //settings code
-                  break;
-                case 1:
-                  Navigator.pushNamed(context, "/tasks");
-                  break;
-                case 2:
-                  Navigator.pushNamed(context, "/home");
-                  break;
-                case 3:
-                  break;
-              }
-            },
-            tabs: [
-              GButton(icon: Icons.settings, text: "Settings"),
-              GButton(icon: Icons.calendar_month, text: "Tasks"),
-              GButton(icon: Icons.home, text: "Home"),
-              GButton(icon: Icons.watch, text: "Trackers"),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }
