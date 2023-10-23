@@ -33,6 +33,7 @@ class _TrackerScreenState extends State<TrackerScreen> {
       builder: (context) {
         return AlertboxDialog(
           controller: newHabitNameController,
+          hintText: 'Enter Habit Name!',
           save: saveNewHabit,
           cancel: cancelHabitBox,
         );
@@ -59,6 +60,7 @@ class _TrackerScreenState extends State<TrackerScreen> {
       builder: (context) {
         return AlertboxDialog(
           controller: newHabitNameController,
+          hintText: habitList[index][0],
           save: () => saveExistingHabit(index),
           cancel: cancelHabitBox,
         );
