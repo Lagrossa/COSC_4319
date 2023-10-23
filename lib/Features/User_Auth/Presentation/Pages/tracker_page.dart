@@ -69,8 +69,9 @@ class _TrackerScreenState extends State<TrackerScreen> {
   void saveExistingHabit(int index) {
     setState(() {
       habitList[index][0] = newHabitNameController.text;
-      Navigator.pop(context);
     });
+    Navigator.pop(context);
+    newHabitNameController.clear();
   }
 
   void deleteHabit(int index) {
