@@ -50,6 +50,14 @@ class HomeScreen extends StatelessWidget {
                   Navigator.pushNamed(context, "/trackers");
                 },
               ),
+              ListTile(
+                leading: Icon(Icons.exit_to_app),
+                title: Text('Sign Out'),
+                onTap: () {
+                  FirebaseAuth.instance.signOut();
+                  Navigator.pushNamed(context, "/login");
+                },
+              ),
             ],
           ),
         ),
@@ -65,7 +73,7 @@ class HomeScreen extends StatelessWidget {
           SizedBox(
             height: 30,
           ),
-          GestureDetector(
+          /*GestureDetector(
             onTap: () {
               FirebaseAuth.instance.signOut();
               Navigator.pushNamed(context, "/login");
@@ -85,7 +93,7 @@ class HomeScreen extends StatelessWidget {
                         fontSize: 15),
                   ),
                 )),
-          ),
+          ),*/
           SizedBox(
             height: 30,
           ),

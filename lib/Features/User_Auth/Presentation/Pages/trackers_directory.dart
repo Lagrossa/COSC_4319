@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class TrackersDirectory extends StatelessWidget {
@@ -155,6 +156,14 @@ class TrackersDirectory extends StatelessWidget {
                 title: Text('Trackers'),
                 onTap: () {
                   Navigator.pushNamed(context, "/trackers");
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.exit_to_app),
+                title: Text('Sign Out'),
+                onTap: () {
+                  FirebaseAuth.instance.signOut();
+                  Navigator.pushNamed(context, "/login");
                 },
               ),
             ],

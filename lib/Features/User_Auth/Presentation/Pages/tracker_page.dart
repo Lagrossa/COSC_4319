@@ -2,6 +2,7 @@ import 'package:addvisor/Features/User_Auth/Presentation/Pages/home_screen.dart'
 import 'package:addvisor/components/addtracker.dart';
 import 'package:addvisor/components/habitBox.dart';
 import 'package:addvisor/components/alertbox_dialog.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
@@ -125,6 +126,14 @@ class _TrackerScreenState extends State<TrackerScreen> {
                 title: Text('Trackers'),
                 onTap: () {
                   Navigator.pushNamed(context, "/trackers");
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.exit_to_app),
+                title: Text('Sign Out'),
+                onTap: () {
+                  FirebaseAuth.instance.signOut();
+                  Navigator.pushNamed(context, "/login");
                 },
               ),
             ],
