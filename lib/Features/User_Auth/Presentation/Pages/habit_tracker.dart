@@ -6,20 +6,45 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
-class TrackerScreen extends StatefulWidget {
-  const TrackerScreen({super.key});
+class HabitScreen extends StatefulWidget {
+  const HabitScreen({super.key});
 
   @override
-  State<TrackerScreen> createState() => _TrackerScreenState();
+  State<HabitScreen> createState() => _HabitScreenState();
 }
 
-class _TrackerScreenState extends State<TrackerScreen> {
+class _HabitScreenState extends State<HabitScreen> {
   List habitList = [
     /* EXAMPLES..
     ["Practice on Leetcode", false],
     ["Daily Workout", false],
     ["Do Homework", false],*/
   ];
+
+  /*
+  Potentially:
+  Habit Groups?
+  Automatic assignment of habit groups based on day?
+
+  Notify based on day?
+  
+  None - 0b_0000_0000
+  Monday - 0b_0000_0001
+  Tuesday - 0b_0000_0010
+  Wednesday - 0b_0000_0100
+  Thursday - 0b_0000_1000
+  Friday - 0b_0001_0000
+  Saturday - 0b_0010_0000
+  Sunday - 0b_0100_0000
+
+  Define Weekend as Sat | Sun
+  Define Weekday as M | T | W | TH | F
+
+  Use && to check day of the week based on the user's binary val (uVAL).
+
+  bool notifyToday = Today.val & uVAL ? true : false  
+
+  */
 
   void tapCheckBox(bool? val, int index) {
     setState(() {
@@ -105,7 +130,7 @@ class _TrackerScreenState extends State<TrackerScreen> {
               ),
               ListTile(
                 leading: Icon(Icons.home),
-                title: Text('Home Screen'),
+                title: Text('Home'),
                 onTap: () {
                   Navigator.pushNamed(context, "/home");
                 },

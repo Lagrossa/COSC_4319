@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         '/signUp': (context) => SignUpScreen(),
         '/home': (context) => HomeScreen(),
         '/trackers': (context) => TrackersDirectory(),
-        '/habits': (context) => TrackerScreen(),
+        '/habits': (context) => HabitScreen(),
         '/tasks': (context) => taskScreen(),
       },
     );

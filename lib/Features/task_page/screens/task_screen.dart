@@ -40,7 +40,7 @@ class _TaskState extends State<taskScreen> {
               ),
               ListTile(
                 leading: Icon(Icons.home),
-                title: Text('Home Screen'),
+                title: Text('Home'),
                 onTap: () {
                   Navigator.pushNamed(context, "/home");
                 },

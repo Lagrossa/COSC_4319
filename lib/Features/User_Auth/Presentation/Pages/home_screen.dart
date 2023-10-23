@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("HomeScreen"),
+        title: Text("Home"),
       ),
       drawer: Drawer(
         child: Container(
@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
               ),
               ListTile(
                 leading: Icon(Icons.home),
-                title: Text('Home Screen'),
+                title: Text('Home'),
                 onTap: () {
                   Navigator.pushNamed(context, "/home");
                 },
