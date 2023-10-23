@@ -12,6 +12,49 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("HomeScreen"),
       ),
+      drawer: Drawer(
+        child: Container(
+          color: Colors.blue[600],
+          child: ListView(
+            children: [
+              DrawerHeader(
+                child: Center(
+                  child: Text(
+                    'A D D V I S O R',
+                    style: TextStyle(
+                        fontSize: 30, fontFamily: 'Arial', color: Colors.white),
+                  ),
+                ),
+              ),
+              ListTile(
+                leading: Icon(Icons.home),
+                title: Text('Home Screen'),
+                onTap: () {
+                  Navigator.pushNamed(context, "/home");
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.checklist_sharp),
+                title: Text('Tasks'),
+                onTap: () {
+                  Navigator.pushNamed(context, "/tasks");
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.medical_services_outlined),
+                title: Text('Medication'),
+              ),
+              ListTile(
+                leading: Icon(Icons.event_repeat),
+                title: Text('Habits'),
+                onTap: () {
+                  Navigator.pushNamed(context, "/trackers");
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
