@@ -1,7 +1,7 @@
 import 'package:addvisor/Features/User_Auth/Presentation/Pages/home_screen.dart';
 import 'package:addvisor/components/addtracker.dart';
 import 'package:addvisor/components/habitBox.dart';
-import 'package:addvisor/components/newHabitTracker.dart';
+import 'package:addvisor/components/alertbox_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
@@ -31,10 +31,10 @@ class _TrackerScreenState extends State<TrackerScreen> {
     showDialog(
       context: this.context,
       builder: (context) {
-        return NewHabitTracker(
+        return AlertboxDialog(
           controller: newHabitNameController,
           save: saveNewHabit,
-          cancel: cancelNewHabit,
+          cancel: cancelHabitBox,
         );
       },
     );
@@ -48,9 +48,35 @@ class _TrackerScreenState extends State<TrackerScreen> {
     Navigator.of(context as BuildContext).pop();
   }
 
-  void cancelNewHabit() {
+  void cancelHabitBox() {
     newHabitNameController.clear();
     Navigator.of(context as BuildContext).pop();
+  }
+
+  void openHabitEdit(int index) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertboxDialog(
+          controller: newHabitNameController,
+          save: () => saveExistingHabit(index),
+          cancel: cancelHabitBox,
+        );
+      },
+    );
+  }
+
+  void saveExistingHabit(int index) {
+    setState(() {
+      habitList[index][0] = newHabitNameController.text;
+      Navigator.pop(context);
+    });
+  }
+
+  void deleteHabit(int index) {
+    setState(() {
+      habitList.removeAt(index);
+    });
   }
 
   @override
@@ -64,9 +90,12 @@ class _TrackerScreenState extends State<TrackerScreen> {
           itemCount: habitList.length,
           itemBuilder: (context, index) {
             return HabitBox(
-                name: habitList[index][0],
-                completed: habitList[index][1],
-                onChanged: (value) => tapCheckBox(value, index));
+              name: habitList[index][0],
+              completed: habitList[index][1],
+              onChanged: (value) => tapCheckBox(value, index),
+              settingsTap: (context) => openHabitEdit(index),
+              deleteTap: (context) => deleteHabit(index),
+            );
           }),
       bottomNavigationBar: Container(
         color: Colors.black,

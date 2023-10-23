@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class NewHabitTracker extends StatelessWidget {
+class AlertboxDialog extends StatelessWidget {
   final controller;
   final VoidCallback save;
   final VoidCallback cancel;
-  const NewHabitTracker(
+  const AlertboxDialog(
       {super.key,
       required this.controller,
       required this.save,

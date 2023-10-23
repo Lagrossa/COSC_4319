@@ -7,8 +7,7 @@
         {
             "name": "COSC_4319",
             "request": "launch",
-            "type": "dart",
-            "args": ["-d", "emulator-5554"]
+            "type": "dart"
         },
         {
             "name": "COSC_4319 (profile mode)",
