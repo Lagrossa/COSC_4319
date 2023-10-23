@@ -2,7 +2,7 @@ import 'package:addvisor/Features/App/Load_Screen/load_screen.dart';
 import 'package:addvisor/Features/User_Auth/Presentation/Pages/home_screen.dart';
 import 'package:addvisor/Features/User_Auth/Presentation/Pages/login_screen.dart';
 import 'package:addvisor/Features/User_Auth/Presentation/Pages/signUp_screen.dart';
-import 'package:addvisor/Features/User_Auth/Presentation/Pages/tracker_page.dart';
+import 'package:addvisor/Features/User_Auth/Presentation/Pages/habit_tracker.dart';
 import 'package:addvisor/Features/User_Auth/Presentation/Pages/trackers_directory.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
