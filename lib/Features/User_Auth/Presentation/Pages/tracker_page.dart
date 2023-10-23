@@ -15,8 +15,8 @@ class TrackerScreen extends StatefulWidget {
 class _TrackerScreenState extends State<TrackerScreen> {
   List habitList = [
     /* EXAMPLES..
-    ["Daily Leetcode", false],
-    ["Daily Drawing", false],
+    ["Practice on Leetcode", false],
+    ["Daily Workout", false],
     ["Do Homework", false],*/
   ];
 

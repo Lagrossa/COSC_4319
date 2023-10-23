@@ -66,7 +66,7 @@ class TrackersDirectory extends StatelessWidget {
                     child: Container(
                       height: 100,
                       width: 300,
-                      color: Color.fromARGB(255, 255, 0, 0),
+                      color: Color.fromARGB(255, 119, 248, 184),
                       alignment: Alignment.center,
                       child: TextButton(
                         child: Text(
@@ -99,7 +99,7 @@ class TrackersDirectory extends StatelessWidget {
                     child: Container(
                       height: 100,
                       width: 300,
-                      color: Color.fromARGB(255, 255, 0, 0),
+                      color: Color.fromARGB(255, 189, 124, 241),
                       alignment: Alignment.center,
                       child: TextButton(
                         child: Text(
