@@ -1,10 +1,8 @@
-import 'package:addvisor/Features/User_Auth/Presentation/Pages/home_screen.dart';
 import 'package:addvisor/components/addtracker.dart';
+import 'package:addvisor/components/drawer_nav.dart';
 import 'package:addvisor/components/habitBox.dart';
 import 'package:addvisor/components/alertbox_dialog.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 
 class HabitScreen extends StatefulWidget {
   const HabitScreen({super.key});
@@ -27,7 +25,7 @@ class _HabitScreenState extends State<HabitScreen> {
   Automatic assignment of habit groups based on day?
 
   Notify based on day?
-  
+
   None - 0b_0000_0000
   Monday - 0b_0000_0001
   Tuesday - 0b_0000_0010
@@ -115,56 +113,7 @@ class _HabitScreenState extends State<HabitScreen> {
       appBar: AppBar(
         title: Text("Habit Tracker"),
       ),
-      drawer: Drawer(
-        child: Container(
-          color: Colors.blue[600],
-          child: ListView(
-            children: [
-              DrawerHeader(
-                child: Center(
-                  child: Icon(
-                    Icons.person,
-                    size: 100,
-                  ),
-                ),
-              ),
-              ListTile(
-                leading: Icon(Icons.home),
-                title: Text('Home'),
-                onTap: () {
-                  Navigator.pushNamed(context, "/home");
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.checklist_sharp),
-                title: Text('Tasks'),
-                onTap: () {
-                  Navigator.pushNamed(context, "/tasks");
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.medical_services_outlined),
-                title: Text('Medication'),
-              ),
-              ListTile(
-                leading: Icon(Icons.event_repeat),
-                title: Text('Trackers'),
-                onTap: () {
-                  Navigator.pushNamed(context, "/trackers");
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.exit_to_app),
-                title: Text('Sign Out'),
-                onTap: () {
-                  FirebaseAuth.instance.signOut();
-                  Navigator.pushNamed(context, "/login");
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
+      drawer: DrawerNav(),
       backgroundColor: Colors.grey[300],
       floatingActionButton: AddTrackerActionButton(
         onPressed: () => createHabit(),
