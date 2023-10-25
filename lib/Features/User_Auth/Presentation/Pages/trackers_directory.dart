@@ -1,4 +1,5 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:addvisor/components/drawer_nav.dart';
+import 'package:addvisor/components/habit_heat_map.dart';
 import 'package:flutter/material.dart';
 
 class TrackersDirectory extends StatelessWidget {
@@ -30,13 +31,20 @@ class TrackersDirectory extends StatelessWidget {
                 Container(
                     height: 400,
                     color: Colors.white70,
-                    alignment: Alignment(0, 0),
+                    alignment: Alignment(0, -1),
                     child: Container(
                       height: 100,
                       width: 300,
-                      color: Colors.teal[300],
                       alignment: Alignment.center,
                       child: TextButton(
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.teal),
+                            shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                    side: BorderSide(color: Colors.teal)))),
                         child: Text(
                           'H A B I T S',
                           style: TextStyle(
@@ -67,9 +75,18 @@ class TrackersDirectory extends StatelessWidget {
                     child: Container(
                       height: 100,
                       width: 300,
-                      color: Color.fromARGB(255, 119, 248, 184),
                       alignment: Alignment.center,
                       child: TextButton(
+                        style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                                Color.fromARGB(255, 119, 248, 184)),
+                            shape: MaterialStateProperty.all<
+                                    RoundedRectangleBorder>(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(18.0),
+                                    side: BorderSide(
+                                        color: Color.fromARGB(
+                                            255, 119, 248, 184))))),
                         child: Text(
                           'S Y M P T O M S',
                           style: TextStyle(
@@ -120,56 +137,7 @@ class TrackersDirectory extends StatelessWidget {
           ),
         ),
       ]),
-      drawer: Drawer(
-        child: Container(
-          color: Colors.blue[600],
-          child: ListView(
-            children: [
-              DrawerHeader(
-                child: Center(
-                  child: Icon(
-                    Icons.person,
-                    size: 100,
-                  ),
-                ),
-              ),
-              ListTile(
-                leading: Icon(Icons.home),
-                title: Text('Home Screen'),
-                onTap: () {
-                  Navigator.pushNamed(context, "/home");
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.checklist_sharp),
-                title: Text('Tasks'),
-                onTap: () {
-                  Navigator.pushNamed(context, "/tasks");
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.medical_services_outlined),
-                title: Text('Medication'),
-              ),
-              ListTile(
-                leading: Icon(Icons.event_repeat),
-                title: Text('Trackers'),
-                onTap: () {
-                  Navigator.pushNamed(context, "/trackers");
-                },
-              ),
-              ListTile(
-                leading: Icon(Icons.exit_to_app),
-                title: Text('Sign Out'),
-                onTap: () {
-                  FirebaseAuth.instance.signOut();
-                  Navigator.pushNamed(context, "/login");
-                },
-              ),
-            ],
-          ),
-        ),
-      ),
+      drawer: DrawerNav(),
     );
   }
 }

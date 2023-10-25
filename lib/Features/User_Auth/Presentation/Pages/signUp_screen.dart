@@ -2,6 +2,7 @@ import 'package:addvisor/Features/User_Auth/Presentation/Pages/login_screen.dart
 import 'package:addvisor/Features/User_Auth/Presentation/Widgets/form_container_widget.dart';
 import 'package:addvisor/Features/User_Auth/firebase_auth_imp/firebase_auth_service.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -13,9 +14,9 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final FirebaseAuthService _auth = FirebaseAuthService();
-  TextEditingController _usernameController = TextEditingController();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   void dispose() {
@@ -30,17 +31,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text("Sign Up"),
+        title: const Text("Sign Up"),
       ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
           child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text(
+            const Text(
               "Sign Up",
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             FormContainerWidget(
@@ -48,7 +49,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               hintText: "Username",
               isPasswordField: false,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             FormContainerWidget(
@@ -56,7 +57,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               hintText: "Email",
               isPasswordField: false,
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             FormContainerWidget(
@@ -64,7 +65,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               hintText: "Password",
               isPasswordField: true,
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             GestureDetector(
@@ -75,19 +76,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     decoration: BoxDecoration(
                         color: Colors.blue,
                         borderRadius: BorderRadius.circular(10)),
-                    child: Center(
+                    child: const Center(
                         child: Text("Sign Up",
                             style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold))))),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text("Already have an account?"),
-                SizedBox(
+                const SizedBox(
                   width: 5,
                 ),
                 GestureDetector(
@@ -97,7 +98,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         MaterialPageRoute(builder: (context) => LoginScreen()),
                         (route) => false);
                   },
-                  child: Text("Log in",
+                  child: const Text("Log in",
                       style: TextStyle(
                           color: Colors.blue, fontWeight: FontWeight.bold)),
                 )
@@ -117,10 +118,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
     User? user = await _auth.signUpWithEmailAndPassword(email, password);
 
     if (user != null) {
-      print("User is successfully created");
+      if (kDebugMode) {
+        print("User is successfully created");
+      }
       Navigator.pushNamed(context, "/home");
     } else {
-      print("Error Occurred in SignUP");
+      if (kDebugMode) {
+        print("Error Occurred in SignUP");
+      }
     }
   }
 }

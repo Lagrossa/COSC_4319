@@ -41,7 +41,8 @@ dependencies:
   google_nav_bar: ^5.0.6
   awesome_notifications: ^0.8.2
   flutter_slidable: ^1.2.0
-
+  flutter_heatmap_calendar: ^1.0.5
+  
 dev_dependencies:
   flutter_test:
     sdk: flutter

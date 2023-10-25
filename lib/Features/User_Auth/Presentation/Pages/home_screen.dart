@@ -1,4 +1,5 @@
 import 'package:addvisor/components/drawer_nav.dart';
+import 'package:addvisor/components/habit_heat_map.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
@@ -15,38 +16,7 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(
-              child: Text(
-            "Welcome",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
-          )),
-          SizedBox(
-            height: 30,
-          ),
-          /*GestureDetector(
-            onTap: () {
-              FirebaseAuth.instance.signOut();
-              Navigator.pushNamed(context, "/login");
-            },
-            child: Container(
-                height: 45,
-                width: 100,
-                decoration: BoxDecoration(
-                    color: Colors.blue,
-                    borderRadius: BorderRadius.circular(10)),
-                child: Center(
-                  child: Text(
-                    "Sign out",
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15),
-                  ),
-                )),
-          ),*/
-          SizedBox(
-            height: 30,
-          ),
+          Container(height: 300, width: 300, child: HabitHeatMap()),
         ],
       ),
       bottomNavigationBar: Container(
