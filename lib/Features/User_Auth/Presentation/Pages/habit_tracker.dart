@@ -14,6 +14,7 @@ class HabitScreen extends StatefulWidget {
 }
 
 class _HabitScreenState extends State<HabitScreen> {
+  double percentCompleted = 0;
   List habitList = [
     /* EXAMPLES..
     ["Practice on Leetcode", false],
@@ -50,6 +51,7 @@ class _HabitScreenState extends State<HabitScreen> {
     setState(() {
       habitList[index][1] = val;
     });
+    updatePercent();
   }
 
   final newHabitNameController = TextEditingController();
@@ -74,6 +76,7 @@ class _HabitScreenState extends State<HabitScreen> {
     });
     newHabitNameController.clear();
     Navigator.of(context as BuildContext).pop();
+    updatePercent();
   }
 
   void cancelHabitBox() {
@@ -107,6 +110,16 @@ class _HabitScreenState extends State<HabitScreen> {
     setState(() {
       habitList.removeAt(index);
     });
+    updatePercent();
+  }
+
+  void updatePercent() {
+    int numCompleted = 0;
+    for (int x = 0; x < habitList.length; x++) {
+      numCompleted = habitList[x][1] == true ? numCompleted + 1 : numCompleted;
+    }
+    percentCompleted = numCompleted / habitList.length;
+    print(percentCompleted);
   }
 
   @override
@@ -126,15 +139,16 @@ class _HabitScreenState extends State<HabitScreen> {
             child: Container(
               child: CircularPercentIndicator(
                 animation: true,
-                animationDuration: 10000,
+                animateFromLastPercent: true,
+                animationDuration: 1000,
                 backgroundColor: Color.fromARGB(255, 183, 216, 243),
                 progressColor: Colors.blue[700],
                 radius: 90,
                 lineWidth: 10,
-                percent: 1,
+                percent: percentCompleted,
                 circularStrokeCap: CircularStrokeCap.round,
                 center: Text(
-                  '40%',
+                  '${(percentCompleted * 100).truncate()} %',
                   style: TextStyle(fontSize: (20)),
                 ),
               ),
@@ -145,10 +159,11 @@ class _HabitScreenState extends State<HabitScreen> {
             child: Container(
               child: LinearPercentIndicator(
                 animation: true,
+                animateFromLastPercent: true,
                 animationDuration: 1000,
                 backgroundColor: Color.fromARGB(255, 183, 216, 243),
                 progressColor: Colors.blue[700],
-                percent: 1,
+                percent: percentCompleted,
                 lineHeight: 10,
               ),
             ),
