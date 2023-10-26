@@ -139,6 +139,8 @@ class _HabitScreenState extends State<HabitScreen> {
             child: Container(
               child: CircularPercentIndicator(
                 animation: true,
+                //arcType: ArcType.FULL,
+                curve: Curves.easeInOutCirc,
                 animateFromLastPercent: true,
                 animationDuration: 1000,
                 backgroundColor: Color.fromARGB(255, 183, 216, 243),
@@ -161,6 +163,7 @@ class _HabitScreenState extends State<HabitScreen> {
                 animation: true,
                 animateFromLastPercent: true,
                 animationDuration: 1000,
+                curve: Curves.easeInOutCirc,
                 backgroundColor: Color.fromARGB(255, 183, 216, 243),
                 progressColor: Colors.blue[700],
                 percent: percentCompleted,
