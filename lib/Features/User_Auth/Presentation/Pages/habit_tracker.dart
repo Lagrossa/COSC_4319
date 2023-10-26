@@ -3,6 +3,8 @@ import 'package:addvisor/components/drawer_nav.dart';
 import 'package:addvisor/components/habitBox.dart';
 import 'package:addvisor/components/alertbox_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class HabitScreen extends StatefulWidget {
   const HabitScreen({super.key});
@@ -110,25 +112,62 @@ class _HabitScreenState extends State<HabitScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Habit Tracker"),
-      ),
-      drawer: DrawerNav(),
-      backgroundColor: Colors.grey[300],
-      floatingActionButton: AddTrackerActionButton(
-        onPressed: () => createHabit(),
-      ),
-      body: ListView.builder(
-          itemCount: habitList.length,
-          itemBuilder: (context, index) {
-            return HabitBox(
-              name: habitList[index][0],
-              completed: habitList[index][1],
-              onChanged: (value) => tapCheckBox(value, index),
-              settingsTap: (context) => openHabitEdit(index),
-              deleteTap: (context) => deleteHabit(index),
-            );
-          }),
-    );
+        appBar: AppBar(
+          title: Text("Habit Tracker"),
+        ),
+        drawer: DrawerNav(),
+        backgroundColor: Colors.grey[300],
+        floatingActionButton: AddTrackerActionButton(
+          onPressed: () => createHabit(),
+        ),
+        body: Flex(direction: Axis.vertical, children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              child: CircularPercentIndicator(
+                animation: true,
+                animationDuration: 10000,
+                backgroundColor: Color.fromARGB(255, 183, 216, 243),
+                progressColor: Colors.blue[700],
+                radius: 90,
+                lineWidth: 10,
+                percent: 1,
+                circularStrokeCap: CircularStrokeCap.round,
+                center: Text(
+                  '40%',
+                  style: TextStyle(fontSize: (20)),
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              child: LinearPercentIndicator(
+                animation: true,
+                animationDuration: 1000,
+                backgroundColor: Color.fromARGB(255, 183, 216, 243),
+                progressColor: Colors.blue[700],
+                percent: 1,
+                lineHeight: 10,
+              ),
+            ),
+          ),
+          Expanded(
+            child: SizedBox(
+              child: ListView.builder(
+                  itemCount: habitList.length,
+                  itemBuilder: (context, index) {
+                    return HabitBox(
+                      name: habitList[index][0],
+                      completed: habitList[index][1],
+                      onChanged: (value) => tapCheckBox(value, index),
+                      settingsTap: (context) => openHabitEdit(index),
+                      deleteTap: (context) => deleteHabit(index),
+                    );
+                  }),
+            ),
+          ),
+        ]));
   }
 }
