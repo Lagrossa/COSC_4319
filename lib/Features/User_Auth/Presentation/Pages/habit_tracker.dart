@@ -167,7 +167,7 @@ class _HabitScreenState extends State<HabitScreen> {
                 backgroundColor: Color.fromARGB(255, 183, 216, 243),
                 progressColor: Colors.blue[700],
                 percent: percentCompleted,
-                lineHeight: 10,
+                lineHeight: 15,
               ),
             ),
           ),

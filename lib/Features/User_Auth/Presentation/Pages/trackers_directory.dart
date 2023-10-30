@@ -1,15 +1,16 @@
 import 'package:addvisor/components/drawer_nav.dart';
-import 'package:addvisor/components/habit_heat_map.dart';
 import 'package:flutter/material.dart';
 
 class TrackersDirectory extends StatelessWidget {
+  const TrackersDirectory({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lightBlue[100],
       body: CustomScrollView(slivers: [
         SliverAppBar(
-          title: Text(
+          title: const Text(
             '              T R A C K E R S',
             textAlign: TextAlign.center,
           ),
@@ -17,7 +18,7 @@ class TrackersDirectory extends StatelessWidget {
           pinned: true,
           flexibleSpace: FlexibleSpaceBar(
             background: Container(
-              color: Color.fromARGB(255, 33, 243, 191),
+              color: const Color.fromARGB(255, 33, 243, 191),
             ),
           ),
         ),
@@ -31,7 +32,7 @@ class TrackersDirectory extends StatelessWidget {
                 Container(
                     height: 400,
                     color: Colors.white70,
-                    alignment: Alignment(0, -1),
+                    alignment: const Alignment(0, -1),
                     child: Container(
                       height: 100,
                       width: 300,
@@ -44,8 +45,9 @@ class TrackersDirectory extends StatelessWidget {
                                     RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(18.0),
-                                    side: BorderSide(color: Colors.teal)))),
-                        child: Text(
+                                    side:
+                                        const BorderSide(color: Colors.teal)))),
+                        child: const Text(
                           'H A B I T S',
                           style: TextStyle(
                               color: Colors.white,
@@ -71,7 +73,7 @@ class TrackersDirectory extends StatelessWidget {
                 Container(
                     height: 400,
                     color: Colors.white70,
-                    alignment: Alignment(0, 0),
+                    alignment: const Alignment(0, 0),
                     child: Container(
                       height: 100,
                       width: 300,
@@ -79,15 +81,15 @@ class TrackersDirectory extends StatelessWidget {
                       child: TextButton(
                         style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
-                                Color.fromARGB(255, 119, 248, 184)),
+                                const Color.fromARGB(255, 119, 248, 184)),
                             shape: MaterialStateProperty.all<
                                     RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(18.0),
-                                    side: BorderSide(
+                                    side: const BorderSide(
                                         color: Color.fromARGB(
                                             255, 119, 248, 184))))),
-                        child: Text(
+                        child: const Text(
                           'S Y M P T O M S',
                           style: TextStyle(
                               color: Colors.white,
@@ -113,14 +115,14 @@ class TrackersDirectory extends StatelessWidget {
                 Container(
                     height: 400,
                     color: Colors.white70,
-                    alignment: Alignment(0, 0),
+                    alignment: const Alignment(0, 0),
                     child: Container(
                       height: 100,
                       width: 300,
-                      color: Color.fromARGB(255, 189, 124, 241),
+                      color: const Color.fromARGB(255, 189, 124, 241),
                       alignment: Alignment.center,
                       child: TextButton(
-                        child: Text(
+                        child: const Text(
                           'M E D I C A T I O N',
                           style: TextStyle(
                               color: Colors.white,

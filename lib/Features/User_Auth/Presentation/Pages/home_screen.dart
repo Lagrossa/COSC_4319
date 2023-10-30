@@ -1,5 +1,6 @@
 import 'package:addvisor/components/drawer_nav.dart';
 import 'package:addvisor/components/habit_heat_map.dart';
+import 'package:addvisor/components/homeBoxes.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
@@ -13,11 +14,42 @@ class HomeScreen extends StatelessWidget {
         title: Text("Home"),
       ),
       drawer: DrawerNav(),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(height: 300, width: 300, child: HabitHeatMap()),
-        ],
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(height: 50, width: 50),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 40),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text("Welcome Home,"),
+                  Text(
+                    "USERNAME",
+                    style: TextStyle(fontSize: 40),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 40.0),
+              child: Text("Monthly Summary"),
+            ),
+            SizedBox(height: 15, width: 15),
+            Expanded(
+                child: GridView.builder(
+                    itemCount: 4,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2),
+                    itemBuilder: (context, index) {
+                      return HomeBoxes(index: index);
+                    })),
+            //Container(height: 300, width: 300, child: HabitHeatMap()),
+          ],
+        ),
       ),
       bottomNavigationBar: Container(
         color: Colors.black,
