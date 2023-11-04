@@ -111,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (user != null) {
       print("User is successfully signed In");
       Navigator.pushNamed(context, "/home");
-      AppNavBar.index = 2;
+      AppNavBar.currentScreen = Screen.Home;
     } else {
       print("Error Occurred in SignUP");
     }

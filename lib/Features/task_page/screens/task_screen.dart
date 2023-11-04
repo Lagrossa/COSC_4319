@@ -1,5 +1,6 @@
 import 'package:addvisor/components/drawer_nav.dart';
 import 'package:addvisor/components/nav_bar.dart';
+import 'package:addvisor/components/themeColors.dart';
 import 'package:flutter/material.dart';
 import 'package:addvisor/Features/task_page/widgets/task_container.dart';
 import 'package:addvisor/Features/task_page/model/task.dart';
@@ -21,10 +22,11 @@ class _TaskState extends State<taskScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: taskWhite,
+        backgroundColor: ThemeColors.darkGrey,
         //appBar: _buildAppBar(),
         appBar: AppBar(
           title: Text("Tasks"),
+          backgroundColor: ThemeColors.darkGrey,
         ),
         drawer: DrawerNav(),
         body: Stack(
@@ -71,10 +73,10 @@ class _TaskState extends State<taskScreen> {
                         vertical: 5,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: ThemeColors.grey,
                         boxShadow: const [
                           BoxShadow(
-                            color: Colors.grey,
+                            color: ThemeColors.darkGrey,
                             offset: Offset(0.0, 0.0),
                             blurRadius: 10.0,
                             spreadRadius: 0.0,
@@ -104,10 +106,10 @@ class _TaskState extends State<taskScreen> {
                         vertical: 5,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: ThemeColors.grey,
                         boxShadow: const [
                           BoxShadow(
-                            color: Colors.grey,
+                            color: ThemeColors.darkGrey,
                             offset: Offset(0.0, 0.0),
                             blurRadius: 10.0,
                             spreadRadius: 0.0,

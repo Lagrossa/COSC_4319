@@ -1,4 +1,6 @@
 import 'package:addvisor/components/drawer_nav.dart';
+import 'package:addvisor/components/nav_bar.dart';
+import 'package:addvisor/components/themeColors.dart';
 import 'package:flutter/material.dart';
 
 class TrackersDirectory extends StatelessWidget {
@@ -7,9 +9,10 @@ class TrackersDirectory extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlue[100],
+      backgroundColor: ThemeColors.darkGrey,
       body: CustomScrollView(slivers: [
         SliverAppBar(
+          backgroundColor: ThemeColors.darkGrey,
           title: const Text(
             '              T R A C K E R S',
             textAlign: TextAlign.center,
@@ -18,7 +21,7 @@ class TrackersDirectory extends StatelessWidget {
           pinned: true,
           flexibleSpace: FlexibleSpaceBar(
             background: Container(
-              color: const Color.fromARGB(255, 33, 243, 191),
+              color: ThemeColors.darkGrey,
             ),
           ),
         ),
@@ -31,7 +34,7 @@ class TrackersDirectory extends StatelessWidget {
               child: Column(children: [
                 Container(
                     height: 400,
-                    color: Colors.white70,
+                    color: ThemeColors.grey,
                     alignment: const Alignment(0, -1),
                     child: Container(
                       height: 100,
@@ -40,17 +43,17 @@ class TrackersDirectory extends StatelessWidget {
                       child: TextButton(
                         style: ButtonStyle(
                             backgroundColor:
-                                MaterialStateProperty.all(Colors.teal),
+                                MaterialStateProperty.all(ThemeColors.salmon),
                             shape: MaterialStateProperty.all<
                                     RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(18.0),
-                                    side:
-                                        const BorderSide(color: Colors.teal)))),
+                                    side: const BorderSide(
+                                        color: ThemeColors.salmon)))),
                         child: const Text(
                           'H A B I T S',
                           style: TextStyle(
-                              color: Colors.white,
+                              color: ThemeColors.white,
                               fontSize: 60,
                               fontFamily: 'Roboto'),
                         ),
@@ -72,7 +75,7 @@ class TrackersDirectory extends StatelessWidget {
               child: Column(children: [
                 Container(
                     height: 400,
-                    color: Colors.white70,
+                    color: ThemeColors.grey,
                     alignment: const Alignment(0, 0),
                     child: Container(
                       height: 100,
@@ -80,19 +83,18 @@ class TrackersDirectory extends StatelessWidget {
                       alignment: Alignment.center,
                       child: TextButton(
                         style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(
-                                const Color.fromARGB(255, 119, 248, 184)),
+                            backgroundColor:
+                                MaterialStateProperty.all(ThemeColors.grey),
                             shape: MaterialStateProperty.all<
                                     RoundedRectangleBorder>(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(18.0),
                                     side: const BorderSide(
-                                        color: Color.fromARGB(
-                                            255, 119, 248, 184))))),
+                                        color: ThemeColors.grey)))),
                         child: const Text(
                           'S Y M P T O M S',
                           style: TextStyle(
-                              color: Colors.white,
+                              color: ThemeColors.white,
                               fontSize: 35,
                               fontFamily: 'Roboto'),
                         ),
@@ -114,18 +116,18 @@ class TrackersDirectory extends StatelessWidget {
               child: Column(children: [
                 Container(
                     height: 400,
-                    color: Colors.white70,
+                    color: ThemeColors.grey,
                     alignment: const Alignment(0, 0),
                     child: Container(
                       height: 100,
                       width: 300,
-                      color: const Color.fromARGB(255, 189, 124, 241),
+                      color: ThemeColors.salmon,
                       alignment: Alignment.center,
                       child: TextButton(
                         child: const Text(
                           'M E D I C A T I O N',
                           style: TextStyle(
-                              color: Colors.white,
+                              color: ThemeColors.white,
                               fontSize: 30,
                               fontFamily: 'Roboto'),
                         ),
@@ -140,6 +142,7 @@ class TrackersDirectory extends StatelessWidget {
         ),
       ]),
       drawer: DrawerNav(),
+      bottomNavigationBar: AppNavBar(),
     );
   }
 }

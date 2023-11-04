@@ -1,3 +1,4 @@
+import 'package:addvisor/components/nav_bar.dart';
 import 'package:addvisor/components/themeColors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ class DrawerNav extends StatelessWidget {
               title: Text('Home'),
               onTap: () {
                 Navigator.pushNamed(context, "/home");
+                AppNavBar.currentScreen = Screen.Home;
               },
             ),
             ListTile(
@@ -30,6 +32,7 @@ class DrawerNav extends StatelessWidget {
               title: Text('Tasks'),
               onTap: () {
                 Navigator.pushNamed(context, "/tasks");
+                AppNavBar.currentScreen = Screen.Tasks;
               },
             ),
             ListTile(
@@ -41,6 +44,7 @@ class DrawerNav extends StatelessWidget {
               title: Text('Trackers'),
               onTap: () {
                 Navigator.pushNamed(context, "/trackers");
+                AppNavBar.currentScreen = Screen.Trackers;
               },
             ),
             ListTile(
@@ -49,6 +53,7 @@ class DrawerNav extends StatelessWidget {
               onTap: () {
                 FirebaseAuth.instance.signOut();
                 Navigator.pushNamed(context, "/login");
+                AppNavBar.currentScreen = Screen.Login;
               },
             ),
           ],

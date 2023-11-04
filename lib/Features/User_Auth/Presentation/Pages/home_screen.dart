@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
                     Text("Welcome Home,"),
                     Text(
                       "USERNAME",
-                      style: TextStyle(fontSize: 40, color: ThemeColors.red),
+                      style: TextStyle(fontSize: 40, color: ThemeColors.salmon),
                     ),
                   ],
                 ),

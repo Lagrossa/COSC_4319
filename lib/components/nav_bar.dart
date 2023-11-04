@@ -2,9 +2,40 @@ import 'package:addvisor/components/themeColors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
+enum Screen { Login, Home, Tasks, Trackers }
+
 class AppNavBar extends StatelessWidget {
   const AppNavBar({super.key});
-  static int index = 2;
+  static Screen currentScreen = Screen.Login;
+
+  int GetIndexFromScreen(Screen screen) {
+    switch (screen) {
+      case Screen.Login:
+        return 0;
+      case Screen.Tasks:
+        return 1;
+      case Screen.Home:
+        return 2;
+      case Screen.Trackers:
+        return 3;
+    }
+  }
+
+  Screen GetScreenFromIndex(int index) {
+    switch (index) {
+      case 0:
+        return Screen.Login;
+      case 1:
+        return Screen.Tasks;
+      case 2:
+        return Screen.Home;
+      case 3:
+        return Screen.Trackers;
+      default:
+        return Screen.Home;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -12,13 +43,14 @@ class AppNavBar extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
         child: GNav(
+          style: GnavStyle.google,
           gap: 8,
           backgroundColor: ThemeColors.darkGrey,
-          activeColor: ThemeColors.red,
+          activeColor: ThemeColors.salmon,
           color: ThemeColors.grey,
           padding: EdgeInsets.all(16),
           tabBackgroundColor: const Color.fromARGB(255, 37, 38, 56),
-          selectedIndex: AppNavBar.index,
+          selectedIndex: GetIndexFromScreen(AppNavBar.currentScreen),
           onTabChange: (index) {
             switch (index) {
               case 0:
@@ -35,7 +67,7 @@ class AppNavBar extends StatelessWidget {
                 Navigator.pushNamed(context, "/trackers");
                 break;
             }
-            AppNavBar.index = index;
+            AppNavBar.currentScreen = GetScreenFromIndex(index);
           },
           tabs: [
             GButton(icon: Icons.settings, text: "Settings"),

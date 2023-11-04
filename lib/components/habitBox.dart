@@ -33,7 +33,7 @@ class HabitBox extends StatelessWidget {
             ),
             SlidableAction(
                 onPressed: deleteTap,
-                backgroundColor: ThemeColors.red,
+                backgroundColor: ThemeColors.salmon,
                 icon: Icons.delete_forever,
                 borderRadius: BorderRadius.only(
                     bottomRight: Radius.circular(16),
