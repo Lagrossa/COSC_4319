@@ -8,14 +8,14 @@ class AppNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: ThemeColors.grey,
+      color: ThemeColors.darkGrey,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
         child: GNav(
           gap: 8,
-          backgroundColor: ThemeColors.grey,
-          activeColor: ThemeColors.darkBlue,
-          color: ThemeColors.ivory,
+          backgroundColor: ThemeColors.darkGrey,
+          activeColor: ThemeColors.white,
+          color: ThemeColors.grey,
           padding: EdgeInsets.all(16),
           tabBackgroundColor: const Color.fromARGB(255, 36, 39, 41),
           selectedIndex: 2,

@@ -14,13 +14,13 @@ class HomeBoxes extends StatelessWidget {
     Container(
       child: Column(
         children: [
-          Text("Daily Habits", style: TextStyle(color: ThemeColors.grey))
+          Text("Daily Habits", style: TextStyle(color: ThemeColors.darkGrey))
         ],
       ),
     ),
-    Text("Daily Medication", style: TextStyle(color: ThemeColors.grey)),
-    Text("Daily Tasks", style: TextStyle(color: ThemeColors.grey)),
-    Text("Idk what to put here", style: TextStyle(color: ThemeColors.grey)),
+    Text("Daily Medication", style: TextStyle(color: ThemeColors.darkGrey)),
+    Text("Daily Tasks", style: TextStyle(color: ThemeColors.darkGrey)),
+    Text("Idk what to put here", style: TextStyle(color: ThemeColors.darkGrey)),
     //HabitHeatMap(),
   ];
 
@@ -32,7 +32,7 @@ class HomeBoxes extends StatelessWidget {
         width: 300,
         height: 300,
         decoration: BoxDecoration(
-          color: ThemeColors.ivory,
+          color: ThemeColors.grey,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Column(children: [

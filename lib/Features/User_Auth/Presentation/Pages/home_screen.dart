@@ -4,7 +4,6 @@ import 'package:addvisor/components/homeBoxes.dart';
 import 'package:addvisor/components/nav_bar.dart';
 import 'package:addvisor/components/themeColors.dart';
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -12,10 +11,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: ThemeColors.grey,
+        backgroundColor: ThemeColors.darkGrey,
         appBar: AppBar(
           title: const Text("Home"),
-          backgroundColor: ThemeColors.grey,
+          backgroundColor: ThemeColors.darkGrey,
         ),
         drawer: DrawerNav(),
         body: SingleChildScrollView(
@@ -32,14 +31,17 @@ class HomeScreen extends StatelessWidget {
                     Text("Welcome Home,"),
                     Text(
                       "USERNAME",
-                      style: TextStyle(fontSize: 40),
+                      style: TextStyle(fontSize: 40, color: ThemeColors.red),
                     ),
                   ],
                 ),
               ),
               const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40.0),
-                child: Text("Monthly Summary"),
+                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                child: Text(
+                  "M O N T H L Y  S U M M A R Y",
+                  style: TextStyle(color: ThemeColors.white, fontSize: 20),
+                ),
               ),
               const SizedBox(height: 15, width: 15),
               Column(
@@ -61,8 +63,8 @@ class HomeScreen extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
                       width: 400,
-                      decoration: BoxDecoration(
-                          color: ThemeColors.ivory,
+                      decoration: const BoxDecoration(
+                          color: ThemeColors.grey,
                           borderRadius: BorderRadius.all(Radius.circular(24))),
                       alignment: Alignment.bottomLeft,
                       child: Padding(

@@ -28,7 +28,7 @@ class HabitBox extends StatelessWidget {
           children: [
             SlidableAction(
               onPressed: settingsTap,
-              backgroundColor: ThemeColors.grey,
+              backgroundColor: ThemeColors.darkGrey,
               icon: Icons.edit,
             ),
             SlidableAction(
@@ -45,7 +45,7 @@ class HabitBox extends StatelessWidget {
             height: 90,
             padding: EdgeInsets.all(24),
             decoration: BoxDecoration(
-                color: ThemeColors.ivory,
+                color: ThemeColors.grey,
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(16),
                     topLeft: Radius.circular(16))),
