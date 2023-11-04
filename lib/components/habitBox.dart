@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'themeColors.dart';
 
 class HabitBox extends StatelessWidget {
   final String name;
@@ -27,26 +28,30 @@ class HabitBox extends StatelessWidget {
           children: [
             SlidableAction(
               onPressed: settingsTap,
-              backgroundColor: Colors.grey.shade600,
+              backgroundColor: ThemeColors.grey,
               icon: Icons.edit,
-              borderRadius: BorderRadius.circular(12),
             ),
             SlidableAction(
-              onPressed: deleteTap,
-              backgroundColor: Colors.red.shade600,
-              icon: Icons.delete_forever,
-              borderRadius: BorderRadius.circular(12),
-            )
+                onPressed: deleteTap,
+                backgroundColor: ThemeColors.red,
+                icon: Icons.delete_forever,
+                borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(16),
+                    topRight: Radius.circular(16)))
           ],
         ),
         child: Container(
+            width: 400,
+            height: 90,
             padding: EdgeInsets.all(24),
             decoration: BoxDecoration(
-                color: const Color.fromARGB(255, 233, 238, 240),
-                borderRadius: BorderRadius.circular(8)),
+                color: ThemeColors.ivory,
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(16),
+                    topLeft: Radius.circular(16))),
             child: Row(
               children: [
-                Checkbox(value: completed, onChanged: onChanged),
+                Checkbox.adaptive(value: completed, onChanged: onChanged),
                 Text(name),
               ],
             )),

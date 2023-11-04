@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_heatmap_calendar/flutter_heatmap_calendar.dart';
+import 'themeColors.dart';
 
 class HabitHeatMap extends StatelessWidget {
   @override
@@ -18,28 +19,29 @@ class HabitHeatMap extends StatelessWidget {
         DateTime(2023, 10, 21): 6,
         DateTime(2023, 10, 19): 2,
         DateTime(2023, 10, 19): 2,
-        DateTime.now().subtract(Duration(days: 1)): 10,
+        DateTime.now().subtract(const Duration(days: 1)): 10,
       },
-      size: 20,
-      defaultColor: Colors.grey[300],
+      size: 40,
+      defaultColor: const Color.fromARGB(255, 232, 233, 222),
       startDate: DateTime.now().subtract(Duration(days: hMapLength)),
+      margin: EdgeInsets.all(5),
       endDate: DateTime.now(),
       colorMode: ColorMode.opacity,
       showColorTip: false,
       showText: true,
-      textColor: Colors.black,
+      textColor: ThemeColors.grey,
       scrollable: true,
-      colorsets: {
-        1: const Color.fromARGB(20, 33, 150, 243),
-        2: const Color.fromARGB(40, 33, 150, 243),
-        3: Color.fromARGB(59, 17, 23, 29),
-        4: const Color.fromARGB(80, 33, 150, 243),
-        5: const Color.fromARGB(100, 33, 150, 243),
-        6: const Color.fromARGB(140, 33, 150, 243),
-        7: const Color.fromARGB(160, 33, 150, 243),
-        8: const Color.fromARGB(180, 33, 150, 243),
-        9: const Color.fromARGB(220, 33, 150, 243),
-        10: const Color.fromARGB(255, 33, 150, 243),
+      colorsets: const {
+        1: Color.fromARGB(20, 23, 137, 252),
+        2: Color.fromARGB(40, 23, 137, 252),
+        3: Color.fromARGB(60, 23, 137, 252),
+        4: Color.fromARGB(80, 23, 137, 252),
+        5: Color.fromARGB(100, 23, 137, 252),
+        6: Color.fromARGB(140, 23, 137, 252),
+        7: Color.fromARGB(160, 23, 137, 252),
+        8: Color.fromARGB(180, 23, 137, 252),
+        9: Color.fromARGB(220, 23, 137, 252),
+        10: ThemeColors.darkBlue,
       },
       onClick: (value) {
         // Maybe Show % Completed Alertbox?

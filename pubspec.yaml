@@ -43,6 +43,9 @@ dependencies:
   flutter_slidable: ^1.2.0
   flutter_heatmap_calendar: ^1.0.5
   percent_indicator: ^3.4.0
+  flutter_map:
+        git:
+            url: https://github.com/fleaflet/flutter_map.git
   
 dev_dependencies:
   flutter_test:
