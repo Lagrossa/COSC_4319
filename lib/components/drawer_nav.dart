@@ -1,3 +1,4 @@
+import 'package:addvisor/components/themeColors.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -6,7 +7,7 @@ class DrawerNav extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
-        color: Colors.blue[600],
+        color: ThemeColors.darkGrey,
         child: ListView(
           children: [
             DrawerHeader(

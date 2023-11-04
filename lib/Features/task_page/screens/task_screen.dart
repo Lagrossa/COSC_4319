@@ -1,4 +1,5 @@
 import 'package:addvisor/components/drawer_nav.dart';
+import 'package:addvisor/components/nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:addvisor/Features/task_page/widgets/task_container.dart';
 import 'package:addvisor/Features/task_page/model/task.dart';
@@ -20,177 +21,138 @@ class _TaskState extends State<taskScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: taskWhite,
-      //appBar: _buildAppBar(),
-      appBar: AppBar(
-        title: Text("Tasks"),
-      ),
-      drawer: DrawerNav(),
-
-      body: Stack(
-        //main body of screen
-        children: [
-          //_buildNavButtons(),
-          Container(
-            padding: EdgeInsets.symmetric(
-              horizontal: 20,
-              vertical: 15,
-            ),
-            child: Column(
-              children: [
-                Expanded(
-                  child: ListView(
-                    children: [
-                      for (Task T in taskList.reversed) //display tasks list
-                        taskContainer(
-                          task: T,
-                          onTaskChanged: _handleTaskChange,
-                          onDeleteTask: _deleteTask,
-                        ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Align(
-            //text box to insert new tasks
-            alignment: Alignment.bottomCenter,
-            child: Row(
-              children: [
-                Expanded(
-                  //text box for new task name
-                  child: Container(
-                    margin: EdgeInsets.only(
-                      bottom: 20,
-                      right: 0,
-                      left: 5,
-                    ),
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 5,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.grey,
-                          offset: Offset(0.0, 0.0),
-                          blurRadius: 10.0,
-                          spreadRadius: 0.0,
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: TextField(
-                      controller: _taskController,
-                      decoration: InputDecoration(
-                        hintText: 'Add new task',
-                        border: InputBorder.none,
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  //text box for new task priority
-                  child: Container(
-                    margin: EdgeInsets.only(
-                      bottom: 20,
-                      right: 5,
-                      left: 40,
-                    ),
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 5,
-                    ),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      boxShadow: const [
-                        BoxShadow(
-                          color: Colors.grey,
-                          offset: Offset(0.0, 0.0),
-                          blurRadius: 10.0,
-                          spreadRadius: 0.0,
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: TextField(
-                      controller: _priorController,
-                      decoration: InputDecoration(
-                        hintText: '1 - 9',
-                        border: InputBorder.none,
-                      ),
-                    ),
-                  ),
-                ),
-                Container(
-                  //add button
-                  margin: EdgeInsets.only(
-                    bottom: 20,
-                    right: 20,
-                  ),
-                  child: ElevatedButton(
-                    child: Text(
-                      '+',
-                      style: TextStyle(
-                        fontSize: 40,
-                      ),
-                    ),
-                    onPressed: () {
-                      _addTask(_taskController.text, _priorController.text);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: taskBlue,
-                      minimumSize: Size(60, 60),
-                      elevation: 10,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
-      bottomNavigationBar: Container(
-        color: Colors.black,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
-          child: GNav(
-            gap: 8,
-            backgroundColor: Colors.black,
-            activeColor: Colors.blue,
-            color: Colors.white,
-            padding: EdgeInsets.all(16),
-            tabBackgroundColor: Color.fromARGB(255, 31, 30, 30),
-            selectedIndex: 1,
-            onTabChange: (index) {
-              switch (index) {
-                case 0:
-                  //settings code
-                  break;
-                case 1:
-                  //Redundant
-                  //Navigator.pushNamed(context, "/tasks");
-                  break;
-                case 2:
-                  Navigator.pushNamed(context, "/home");
-                  break;
-                case 3:
-                  Navigator.pushNamed(context, "/trackers");
-                  break;
-              }
-            },
-            tabs: [
-              GButton(icon: Icons.settings, text: "Settings"),
-              GButton(icon: Icons.calendar_month, text: "Tasks"),
-              GButton(icon: Icons.home, text: "Home"),
-              GButton(icon: Icons.watch, text: "Trackers"),
-            ],
-          ),
+        backgroundColor: taskWhite,
+        //appBar: _buildAppBar(),
+        appBar: AppBar(
+          title: Text("Tasks"),
         ),
-      ),
-    );
+        drawer: DrawerNav(),
+        body: Stack(
+          //main body of screen
+          children: [
+            //_buildNavButtons(),
+            Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 15,
+              ),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: ListView(
+                      children: [
+                        for (Task T in taskList.reversed) //display tasks list
+                          taskContainer(
+                            task: T,
+                            onTaskChanged: _handleTaskChange,
+                            onDeleteTask: _deleteTask,
+                          ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Align(
+              //text box to insert new tasks
+              alignment: Alignment.bottomCenter,
+              child: Row(
+                children: [
+                  Expanded(
+                    //text box for new task name
+                    child: Container(
+                      margin: EdgeInsets.only(
+                        bottom: 20,
+                        right: 0,
+                        left: 5,
+                      ),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 5,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.grey,
+                            offset: Offset(0.0, 0.0),
+                            blurRadius: 10.0,
+                            spreadRadius: 0.0,
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: TextField(
+                        controller: _taskController,
+                        decoration: InputDecoration(
+                          hintText: 'Add new task',
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    //text box for new task priority
+                    child: Container(
+                      margin: EdgeInsets.only(
+                        bottom: 20,
+                        right: 5,
+                        left: 40,
+                      ),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 5,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.grey,
+                            offset: Offset(0.0, 0.0),
+                            blurRadius: 10.0,
+                            spreadRadius: 0.0,
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: TextField(
+                        controller: _priorController,
+                        decoration: InputDecoration(
+                          hintText: '1 - 9',
+                          border: InputBorder.none,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Container(
+                    //add button
+                    margin: EdgeInsets.only(
+                      bottom: 20,
+                      right: 20,
+                    ),
+                    child: ElevatedButton(
+                      child: Text(
+                        '+',
+                        style: TextStyle(
+                          fontSize: 40,
+                        ),
+                      ),
+                      onPressed: () {
+                        _addTask(_taskController.text, _priorController.text);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: taskBlue,
+                        minimumSize: Size(60, 60),
+                        elevation: 10,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        bottomNavigationBar: const AppNavBar());
   }
 
   void _handleTaskChange(Task task) {

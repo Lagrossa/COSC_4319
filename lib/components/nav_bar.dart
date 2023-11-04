@@ -4,7 +4,7 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 
 class AppNavBar extends StatelessWidget {
   const AppNavBar({super.key});
-
+  static int index = 2;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -14,25 +14,28 @@ class AppNavBar extends StatelessWidget {
         child: GNav(
           gap: 8,
           backgroundColor: ThemeColors.darkGrey,
-          activeColor: ThemeColors.white,
+          activeColor: ThemeColors.red,
           color: ThemeColors.grey,
           padding: EdgeInsets.all(16),
-          tabBackgroundColor: const Color.fromARGB(255, 36, 39, 41),
-          selectedIndex: 2,
+          tabBackgroundColor: const Color.fromARGB(255, 37, 38, 56),
+          selectedIndex: AppNavBar.index,
           onTabChange: (index) {
             switch (index) {
               case 0:
-                //settings code
+                Navigator.pushNamed(
+                    context, "/login"); //Change to settings when added
                 break;
               case 1:
                 Navigator.pushNamed(context, "/tasks");
                 break;
               case 2:
-                //Nothing..?
+                Navigator.pushNamed(context, "/home");
                 break;
               case 3:
                 Navigator.pushNamed(context, "/trackers");
+                break;
             }
+            AppNavBar.index = index;
           },
           tabs: [
             GButton(icon: Icons.settings, text: "Settings"),

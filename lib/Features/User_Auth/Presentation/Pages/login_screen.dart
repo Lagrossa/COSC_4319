@@ -1,5 +1,6 @@
 import 'package:addvisor/Features/User_Auth/Presentation/Pages/signUp_screen.dart';
 import 'package:addvisor/Features/User_Auth/Presentation/Widgets/form_container_widget.dart';
+import 'package:addvisor/components/nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:addvisor/Features/User_Auth/firebase_auth_imp/firebase_auth_service.dart';
@@ -110,6 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (user != null) {
       print("User is successfully signed In");
       Navigator.pushNamed(context, "/home");
+      AppNavBar.index = 2;
     } else {
       print("Error Occurred in SignUP");
     }
