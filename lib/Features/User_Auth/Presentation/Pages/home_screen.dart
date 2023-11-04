@@ -22,17 +22,24 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 50, width: 50),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 40),
+              Container(
+                decoration: BoxDecoration(color: ThemeColors.grey),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Welcome Home,"),
-                    Text(
-                      "USERNAME",
-                      style: TextStyle(fontSize: 40, color: ThemeColors.salmon),
-                    ),
+                    const SizedBox(height: 50, width: 50),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 40),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("Welcome Home,"),
+                            Text(
+                              "USERNAME",
+                              style: TextStyle(
+                                  fontSize: 40, color: ThemeColors.salmon),
+                            ),
+                          ]),
+                    )
                   ],
                 ),
               ),

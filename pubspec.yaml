@@ -46,6 +46,7 @@ dependencies:
   flutter_map:
         git:
             url: https://github.com/fleaflet/flutter_map.git
+  google_fonts: ^6.1.0
   
 dev_dependencies:
   flutter_test:

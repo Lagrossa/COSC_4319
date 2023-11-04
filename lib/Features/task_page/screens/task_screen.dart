@@ -143,7 +143,7 @@ class _TaskState extends State<taskScreen> {
                         _addTask(_taskController.text, _priorController.text);
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: taskBlue,
+                        backgroundColor: ThemeColors.red,
                         minimumSize: Size(60, 60),
                         elevation: 10,
                       ),
