@@ -2,6 +2,8 @@ import 'package:addvisor/components/addtracker.dart';
 import 'package:addvisor/components/drawer_nav.dart';
 import 'package:addvisor/components/habitBox.dart';
 import 'package:addvisor/components/alertbox_dialog.dart';
+import 'package:addvisor/components/nav_bar.dart';
+import 'package:addvisor/components/themeColors.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -118,74 +120,78 @@ class _HabitScreenState extends State<HabitScreen> {
     for (int x = 0; x < habitList.length; x++) {
       numCompleted = habitList[x][1] == true ? numCompleted + 1 : numCompleted;
     }
-    percentCompleted = numCompleted / habitList.length;
+    percentCompleted =
+        habitList.length > 0 ? numCompleted / habitList.length : 0;
     print(percentCompleted);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Habit Tracker"),
-        ),
-        drawer: DrawerNav(),
-        backgroundColor: Colors.grey[300],
-        floatingActionButton: AddTrackerActionButton(
-          onPressed: () => createHabit(),
-        ),
-        body: Flex(direction: Axis.vertical, children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              child: CircularPercentIndicator(
-                animation: true,
-                //arcType: ArcType.FULL,
-                curve: Curves.easeInOutCirc,
-                animateFromLastPercent: true,
-                animationDuration: 1000,
-                backgroundColor: Color.fromARGB(255, 183, 216, 243),
-                progressColor: Colors.blue[700],
-                radius: 90,
-                lineWidth: 10,
-                percent: percentCompleted,
-                circularStrokeCap: CircularStrokeCap.round,
-                center: Text(
-                  '${(percentCompleted * 100).truncate()} %',
-                  style: TextStyle(fontSize: (20)),
-                ),
+      appBar: AppBar(
+        backgroundColor: ThemeColors.darkGrey,
+        title: Text("Habit Tracker"),
+      ),
+      drawer: DrawerNav(),
+      backgroundColor: ThemeColors.darkGrey,
+      floatingActionButton: AddTrackerActionButton(
+        onPressed: () => createHabit(),
+      ),
+      body: Flex(direction: Axis.vertical, children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            child: CircularPercentIndicator(
+              animation: true,
+              //arcType: ArcType.FULL,
+              curve: Curves.easeInOutCirc,
+              animateFromLastPercent: true,
+              animationDuration: 1000,
+              backgroundColor: ThemeColors.grey,
+              progressColor: ThemeColors.red,
+              radius: 90,
+              lineWidth: 10,
+              percent: percentCompleted,
+              circularStrokeCap: CircularStrokeCap.round,
+              center: Text(
+                '${(percentCompleted * 100).truncate()} %',
+                style: TextStyle(fontSize: (20)),
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              child: LinearPercentIndicator(
-                animation: true,
-                animateFromLastPercent: true,
-                animationDuration: 1000,
-                curve: Curves.easeInOutCirc,
-                backgroundColor: Color.fromARGB(255, 183, 216, 243),
-                progressColor: Colors.blue[700],
-                percent: percentCompleted,
-                lineHeight: 15,
-              ),
+        ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            child: LinearPercentIndicator(
+              animation: true,
+              animateFromLastPercent: true,
+              animationDuration: 1000,
+              curve: Curves.easeInOutCirc,
+              backgroundColor: ThemeColors.grey,
+              progressColor: ThemeColors.red,
+              percent: percentCompleted,
+              lineHeight: 15,
             ),
           ),
-          Expanded(
-            child: SizedBox(
-              child: ListView.builder(
-                  itemCount: habitList.length,
-                  itemBuilder: (context, index) {
-                    return HabitBox(
-                      name: habitList[index][0],
-                      completed: habitList[index][1],
-                      onChanged: (value) => tapCheckBox(value, index),
-                      settingsTap: (context) => openHabitEdit(index),
-                      deleteTap: (context) => deleteHabit(index),
-                    );
-                  }),
-            ),
+        ),
+        Expanded(
+          child: SizedBox(
+            child: ListView.builder(
+                itemCount: habitList.length,
+                itemBuilder: (context, index) {
+                  return HabitBox(
+                    name: habitList[index][0],
+                    completed: habitList[index][1],
+                    onChanged: (value) => tapCheckBox(value, index),
+                    settingsTap: (context) => openHabitEdit(index),
+                    deleteTap: (context) => deleteHabit(index),
+                  );
+                }),
           ),
-        ]));
+        ),
+      ]),
+      bottomNavigationBar: AppNavBar(),
+    );
   }
 }

@@ -28,7 +28,7 @@ class HabitBox extends StatelessWidget {
           children: [
             SlidableAction(
               onPressed: settingsTap,
-              backgroundColor: ThemeColors.darkGrey,
+              backgroundColor: ThemeColors.grey,
               icon: Icons.edit,
             ),
             SlidableAction(
@@ -45,13 +45,17 @@ class HabitBox extends StatelessWidget {
             height: 90,
             padding: EdgeInsets.all(24),
             decoration: BoxDecoration(
-                color: ThemeColors.grey,
+                color: ThemeColors.deepGrey,
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(16),
                     topLeft: Radius.circular(16))),
             child: Row(
               children: [
-                Checkbox.adaptive(value: completed, onChanged: onChanged),
+                Checkbox.adaptive(
+                  value: completed,
+                  onChanged: onChanged,
+                  activeColor: ThemeColors.red,
+                ),
                 Text(name),
               ],
             )),
