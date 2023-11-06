@@ -23,6 +23,12 @@ class HomeBoxes extends StatelessWidget {
                   Icons.calendar_month,
                   size: 100,
                   color: ThemeColors.tertiary,
+                  shadows: [
+                    Shadow(
+                      color: ThemeColors.background,
+                      blurRadius: 30,
+                    )
+                  ],
                 ),
                 Text(
                   "Daily Habits",
@@ -46,6 +52,12 @@ class HomeBoxes extends StatelessWidget {
                   Icons.medication_outlined,
                   size: 100,
                   color: ThemeColors.tertiary,
+                  shadows: [
+                    Shadow(
+                      color: ThemeColors.background,
+                      blurRadius: 30,
+                    )
+                  ],
                 ),
                 Text(
                   "Daily Medication",
@@ -72,6 +84,12 @@ class HomeBoxes extends StatelessWidget {
                   Icons.task_alt,
                   size: 100,
                   color: ThemeColors.tertiary,
+                  shadows: [
+                    Shadow(
+                      color: ThemeColors.background,
+                      blurRadius: 30,
+                    )
+                  ],
                 ),
                 Text(
                   "Daily Tasks",
@@ -98,6 +116,12 @@ class HomeBoxes extends StatelessWidget {
                   Icons.question_answer,
                   size: 100,
                   color: ThemeColors.tertiary,
+                  shadows: [
+                    Shadow(
+                      color: ThemeColors.background,
+                      blurRadius: 30,
+                    )
+                  ],
                 ),
                 Text(
                   "Other",

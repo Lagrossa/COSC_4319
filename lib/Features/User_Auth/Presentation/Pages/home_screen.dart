@@ -13,8 +13,8 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
         backgroundColor: ThemeColors.background,
         appBar: AppBar(
-          title: Center(
-            child: const Text(
+          title: const Center(
+            child: Text(
               "H O M E",
             ),
           ),
@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
                 child: Container(
                   width: 600,
                   decoration: const BoxDecoration(
-                      color: ThemeColors.secondary,
+                      color: ThemeColors.background,
                       borderRadius: BorderRadius.all(Radius.circular(12))),
                   child: const Column(
                     children: [
@@ -83,8 +83,15 @@ class HomeScreen extends StatelessWidget {
                     child: Container(
                       width: 400,
                       decoration: const BoxDecoration(
-                          color: ThemeColors.secondary,
-                          borderRadius: BorderRadius.all(Radius.circular(24))),
+                        color: ThemeColors.secondary,
+                        borderRadius: BorderRadius.all(Radius.circular(24)),
+                        boxShadow: [
+                          BoxShadow(
+                              color: ThemeColors.secondary,
+                              blurRadius: 1,
+                              spreadRadius: 1),
+                        ],
+                      ),
                       alignment: Alignment.bottomLeft,
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
