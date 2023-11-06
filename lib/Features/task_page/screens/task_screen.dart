@@ -22,11 +22,11 @@ class _TaskState extends State<taskScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: ThemeColors.darkGrey,
+        backgroundColor: ThemeColors.background,
         //appBar: _buildAppBar(),
         appBar: AppBar(
           title: Text("Tasks"),
-          backgroundColor: ThemeColors.darkGrey,
+          backgroundColor: ThemeColors.background,
         ),
         drawer: DrawerNav(),
         body: Stack(
@@ -73,10 +73,10 @@ class _TaskState extends State<taskScreen> {
                         vertical: 5,
                       ),
                       decoration: BoxDecoration(
-                        color: ThemeColors.grey,
+                        color: ThemeColors.secondary,
                         boxShadow: const [
                           BoxShadow(
-                            color: ThemeColors.darkGrey,
+                            color: ThemeColors.background,
                             offset: Offset(0.0, 0.0),
                             blurRadius: 10.0,
                             spreadRadius: 0.0,
@@ -106,10 +106,10 @@ class _TaskState extends State<taskScreen> {
                         vertical: 5,
                       ),
                       decoration: BoxDecoration(
-                        color: ThemeColors.grey,
+                        color: ThemeColors.secondary,
                         boxShadow: const [
                           BoxShadow(
-                            color: ThemeColors.darkGrey,
+                            color: ThemeColors.background,
                             offset: Offset(0.0, 0.0),
                             blurRadius: 10.0,
                             spreadRadius: 0.0,
@@ -143,7 +143,7 @@ class _TaskState extends State<taskScreen> {
                         _addTask(_taskController.text, _priorController.text);
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: ThemeColors.red,
+                        backgroundColor: ThemeColors.tertiary,
                         minimumSize: Size(60, 60),
                         elevation: 10,
                       ),

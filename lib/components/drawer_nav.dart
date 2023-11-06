@@ -8,7 +8,7 @@ class DrawerNav extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: Container(
-        color: ThemeColors.darkGrey,
+        color: ThemeColors.background,
         child: ListView(
           children: [
             DrawerHeader(

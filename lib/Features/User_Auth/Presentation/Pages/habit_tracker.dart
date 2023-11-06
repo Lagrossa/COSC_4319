@@ -129,11 +129,11 @@ class _HabitScreenState extends State<HabitScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: ThemeColors.darkGrey,
+        backgroundColor: ThemeColors.background,
         title: Text("Habit Tracker"),
       ),
       drawer: DrawerNav(),
-      backgroundColor: ThemeColors.darkGrey,
+      backgroundColor: ThemeColors.background,
       floatingActionButton: AddTrackerActionButton(
         onPressed: () => createHabit(),
       ),
@@ -147,8 +147,8 @@ class _HabitScreenState extends State<HabitScreen> {
               curve: Curves.easeInOutCirc,
               animateFromLastPercent: true,
               animationDuration: 1000,
-              backgroundColor: ThemeColors.grey,
-              progressColor: ThemeColors.red,
+              backgroundColor: ThemeColors.secondary,
+              progressColor: ThemeColors.tertiary,
               radius: 90,
               lineWidth: 10,
               percent: percentCompleted,
@@ -168,8 +168,8 @@ class _HabitScreenState extends State<HabitScreen> {
               animateFromLastPercent: true,
               animationDuration: 1000,
               curve: Curves.easeInOutCirc,
-              backgroundColor: ThemeColors.grey,
-              progressColor: ThemeColors.red,
+              backgroundColor: ThemeColors.secondary,
+              progressColor: ThemeColors.tertiary,
               percent: percentCompleted,
               lineHeight: 15,
             ),

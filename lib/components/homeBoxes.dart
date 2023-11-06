@@ -11,16 +11,107 @@ class HomeBoxes extends StatelessWidget {
   });
 
   List boxStuff = [
+    //Daily Habits
     Container(
-      child: Column(
+      child: const Column(
         children: [
-          Text("Daily Habits", style: TextStyle(color: ThemeColors.darkGrey))
+          Padding(
+            padding: EdgeInsets.only(top: 32.0),
+            child: Column(
+              children: [
+                Icon(
+                  Icons.calendar_month,
+                  size: 100,
+                  color: ThemeColors.tertiary,
+                ),
+                Text(
+                  "Daily Habits",
+                  style: TextStyle(color: ThemeColors.white, fontSize: 18),
+                ),
+              ],
+            ),
+          )
         ],
       ),
     ),
-    Text("Daily Medication", style: TextStyle(color: ThemeColors.darkGrey)),
-    Text("Daily Tasks", style: TextStyle(color: ThemeColors.darkGrey)),
-    Text("Idk what to put here", style: TextStyle(color: ThemeColors.darkGrey)),
+    //Daily Medication
+    Container(
+      child: const Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: 32.0),
+            child: Column(
+              children: [
+                Icon(
+                  Icons.medication_outlined,
+                  size: 100,
+                  color: ThemeColors.tertiary,
+                ),
+                Text(
+                  "Daily Medication",
+                  style: TextStyle(
+                      color: ThemeColors.white,
+                      fontSize: 18,
+                      overflow: TextOverflow.visible),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    ),
+    //Daily Tasks
+    Container(
+      child: const Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: 32.0),
+            child: Column(
+              children: [
+                Icon(
+                  Icons.task_alt,
+                  size: 100,
+                  color: ThemeColors.tertiary,
+                ),
+                Text(
+                  "Daily Tasks",
+                  style: TextStyle(
+                      color: ThemeColors.white,
+                      fontSize: 18,
+                      overflow: TextOverflow.visible),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    ),
+    //Other
+    Container(
+      child: const Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: 32.0),
+            child: Column(
+              children: [
+                Icon(
+                  Icons.question_answer,
+                  size: 100,
+                  color: ThemeColors.tertiary,
+                ),
+                Text(
+                  "Other",
+                  style: TextStyle(
+                      color: ThemeColors.white,
+                      fontSize: 18,
+                      overflow: TextOverflow.visible),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    ),
     //HabitHeatMap(),
   ];
 
@@ -32,7 +123,7 @@ class HomeBoxes extends StatelessWidget {
         width: 300,
         height: 300,
         decoration: BoxDecoration(
-          color: ThemeColors.grey,
+          color: ThemeColors.secondary,
           borderRadius: BorderRadius.circular(8),
         ),
         child: Column(children: [

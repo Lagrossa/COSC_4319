@@ -11,10 +11,14 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: ThemeColors.darkGrey,
+        backgroundColor: ThemeColors.background,
         appBar: AppBar(
-          title: const Text("Home"),
-          backgroundColor: ThemeColors.darkGrey,
+          title: Center(
+            child: const Text(
+              "H O M E",
+            ),
+          ),
+          backgroundColor: ThemeColors.background,
         ),
         drawer: DrawerNav(),
         body: SingleChildScrollView(
@@ -22,35 +26,43 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                decoration: BoxDecoration(color: ThemeColors.grey),
-                child: Column(
-                  children: [
-                    const SizedBox(height: 50, width: 50),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 40),
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text("Welcome Home,"),
-                            Text(
-                              "USERNAME",
-                              style: TextStyle(
-                                  fontSize: 40, color: ThemeColors.salmon),
-                            ),
-                          ]),
-                    )
-                  ],
+              Center(
+                child: Container(
+                  width: 600,
+                  decoration: const BoxDecoration(
+                      color: ThemeColors.secondary,
+                      borderRadius: BorderRadius.all(Radius.circular(12))),
+                  child: const Column(
+                    children: [
+                      SizedBox(height: 50, width: 50),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 40),
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "Welcome Home,",
+                                style: TextStyle(color: ThemeColors.white),
+                                textAlign: TextAlign.right,
+                              ),
+                              Text(
+                                "USERNAME",
+                                style: TextStyle(
+                                    fontSize: 40, color: ThemeColors.button),
+                              ),
+                            ]),
+                      )
+                    ],
+                  ),
                 ),
               ),
               const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.0),
+                padding: EdgeInsets.only(left: 20.0, top: 15),
                 child: Text(
                   "M O N T H L Y  S U M M A R Y",
                   style: TextStyle(color: ThemeColors.white, fontSize: 20),
                 ),
               ),
-              const SizedBox(height: 15, width: 15),
               Column(
                 children: [
                   SizedBox(
@@ -71,7 +83,7 @@ class HomeScreen extends StatelessWidget {
                     child: Container(
                       width: 400,
                       decoration: const BoxDecoration(
-                          color: ThemeColors.grey,
+                          color: ThemeColors.secondary,
                           borderRadius: BorderRadius.all(Radius.circular(24))),
                       alignment: Alignment.bottomLeft,
                       child: Padding(

@@ -39,17 +39,17 @@ class AppNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: ThemeColors.darkGrey,
+      color: ThemeColors.background,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
         child: GNav(
           style: GnavStyle.google,
           gap: 8,
-          backgroundColor: ThemeColors.darkGrey,
-          activeColor: ThemeColors.salmon,
-          color: ThemeColors.grey,
+          backgroundColor: ThemeColors.background,
+          activeColor: ThemeColors.button,
+          color: ThemeColors.tertiary,
           padding: EdgeInsets.all(16),
-          tabBackgroundColor: const Color.fromARGB(255, 37, 38, 56),
+          tabBackgroundColor: Color.fromARGB(255, 9, 42, 58),
           selectedIndex: GetIndexFromScreen(AppNavBar.currentScreen),
           onTabChange: (index) {
             switch (index) {
