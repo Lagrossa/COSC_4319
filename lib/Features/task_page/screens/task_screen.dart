@@ -25,7 +25,7 @@ class _TaskState extends State<taskScreen> {
         backgroundColor: ThemeColors.background,
         //appBar: _buildAppBar(),
         appBar: AppBar(
-          title: Text("Tasks"),
+          title: const Text("Tasks"),
           backgroundColor: ThemeColors.background,
         ),
         drawer: DrawerNav(),
@@ -34,7 +34,7 @@ class _TaskState extends State<taskScreen> {
           children: [
             //_buildNavButtons(),
             Container(
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 20,
                 vertical: 15,
               ),
@@ -63,12 +63,12 @@ class _TaskState extends State<taskScreen> {
                   Expanded(
                     //text box for new task name
                     child: Container(
-                      margin: EdgeInsets.only(
+                      margin: const EdgeInsets.only(
                         bottom: 20,
                         right: 0,
                         left: 5,
                       ),
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                         horizontal: 20,
                         vertical: 5,
                       ),
@@ -86,7 +86,7 @@ class _TaskState extends State<taskScreen> {
                       ),
                       child: TextField(
                         controller: _taskController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           hintText: 'Add new task',
                           border: InputBorder.none,
                         ),
@@ -96,12 +96,12 @@ class _TaskState extends State<taskScreen> {
                   Expanded(
                     //text box for new task priority
                     child: Container(
-                      margin: EdgeInsets.only(
+                      margin: const EdgeInsets.only(
                         bottom: 20,
                         right: 5,
                         left: 40,
                       ),
-                      padding: EdgeInsets.symmetric(
+                      padding: const EdgeInsets.symmetric(
                         horizontal: 20,
                         vertical: 5,
                       ),
@@ -119,7 +119,7 @@ class _TaskState extends State<taskScreen> {
                       ),
                       child: TextField(
                         controller: _priorController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           hintText: '1 - 9',
                           border: InputBorder.none,
                         ),
@@ -128,12 +128,12 @@ class _TaskState extends State<taskScreen> {
                   ),
                   Container(
                     //add button
-                    margin: EdgeInsets.only(
+                    margin: const EdgeInsets.only(
                       bottom: 20,
                       right: 20,
                     ),
                     child: ElevatedButton(
-                      child: Text(
+                      child: const Text(
                         '+',
                         style: TextStyle(
                           fontSize: 40,
@@ -144,7 +144,7 @@ class _TaskState extends State<taskScreen> {
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: ThemeColors.tertiary,
-                        minimumSize: Size(60, 60),
+                        minimumSize: const Size(60, 60),
                         elevation: 10,
                       ),
                     ),
@@ -195,7 +195,7 @@ class _TaskState extends State<taskScreen> {
     return AppBar(
       backgroundColor: taskWhite,
       elevation: 0,
-      title: Row(
+      title: const Row(
         children: [
           Icon(
             Icons.menu,
@@ -209,7 +209,7 @@ class _TaskState extends State<taskScreen> {
 
   Widget _buildNavButtons() {
     return Container(
-      padding: EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
       height: 50,
       child: Row(
         children: [
@@ -221,7 +221,7 @@ class _TaskState extends State<taskScreen> {
                   backgroundColor: taskBlue,
                 ),
                 onPressed: () {},
-                child: Text(
+                child: const Text(
                   'Habits',
                   style: TextStyle(fontSize: 12),
                 ),
@@ -230,14 +230,14 @@ class _TaskState extends State<taskScreen> {
           ),
           Expanded(
             child: Container(
-              padding: EdgeInsets.only(left: 8),
+              padding: const EdgeInsets.only(left: 8),
               height: 50,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: taskBlue,
                 ),
                 onPressed: () {},
-                child: Text(
+                child: const Text(
                   'Meds',
                   style: TextStyle(fontSize: 12),
                 ),
@@ -246,14 +246,14 @@ class _TaskState extends State<taskScreen> {
           ),
           Expanded(
             child: Container(
-              padding: EdgeInsets.only(left: 8),
+              padding: const EdgeInsets.only(left: 8),
               height: 50,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: taskBlue,
                 ),
                 onPressed: () {},
-                child: Text(
+                child: const Text(
                   'Symptoms',
                   style: TextStyle(fontSize: 12),
                 ),
@@ -262,14 +262,14 @@ class _TaskState extends State<taskScreen> {
           ),
           Expanded(
             child: Container(
-              padding: EdgeInsets.only(left: 8),
+              padding: const EdgeInsets.only(left: 8),
               height: 50,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: taskBlue,
                 ),
                 onPressed: () {},
-                child: Text(
+                child: const Text(
                   'Notes',
                   style: TextStyle(fontSize: 12),
                 ),

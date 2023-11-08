@@ -1,4 +1,3 @@
-import 'package:addvisor/components/habit_heat_map.dart';
 import 'package:addvisor/components/themeColors.dart';
 import 'package:flutter/material.dart';
 import 'themeColors.dart';
@@ -12,129 +11,121 @@ class HomeBoxes extends StatelessWidget {
 
   List boxStuff = [
     //Daily Habits
-    Container(
-      child: const Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(top: 32.0),
-            child: Column(
-              children: [
-                Icon(
-                  Icons.calendar_month,
-                  size: 100,
-                  color: ThemeColors.tertiary,
-                  shadows: [
-                    Shadow(
-                      color: ThemeColors.background,
-                      blurRadius: 30,
-                    )
-                  ],
-                ),
-                Text(
-                  "Daily Habits",
-                  style: TextStyle(color: ThemeColors.white, fontSize: 18),
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
+    const Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: 32.0),
+          child: Column(
+            children: [
+              Icon(
+                Icons.calendar_month,
+                size: 100,
+                color: ThemeColors.tertiary,
+                shadows: [
+                  Shadow(
+                    color: ThemeColors.background,
+                    blurRadius: 30,
+                  )
+                ],
+              ),
+              Text(
+                "Daily Habits",
+                style: TextStyle(color: ThemeColors.white, fontSize: 18),
+              ),
+            ],
+          ),
+        )
+      ],
     ),
     //Daily Medication
-    Container(
-      child: const Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(top: 32.0),
-            child: Column(
-              children: [
-                Icon(
-                  Icons.medication_outlined,
-                  size: 100,
-                  color: ThemeColors.tertiary,
-                  shadows: [
-                    Shadow(
-                      color: ThemeColors.background,
-                      blurRadius: 30,
-                    )
-                  ],
-                ),
-                Text(
-                  "Daily Medication",
-                  style: TextStyle(
-                      color: ThemeColors.white,
-                      fontSize: 18,
-                      overflow: TextOverflow.visible),
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
+    const Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: 32.0),
+          child: Column(
+            children: [
+              Icon(
+                Icons.medication_outlined,
+                size: 100,
+                color: ThemeColors.tertiary,
+                shadows: [
+                  Shadow(
+                    color: ThemeColors.background,
+                    blurRadius: 30,
+                  )
+                ],
+              ),
+              Text(
+                "Daily Medication",
+                style: TextStyle(
+                    color: ThemeColors.white,
+                    fontSize: 18,
+                    overflow: TextOverflow.visible),
+              ),
+            ],
+          ),
+        )
+      ],
     ),
     //Daily Tasks
-    Container(
-      child: const Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(top: 32.0),
-            child: Column(
-              children: [
-                Icon(
-                  Icons.task_alt,
-                  size: 100,
-                  color: ThemeColors.tertiary,
-                  shadows: [
-                    Shadow(
-                      color: ThemeColors.background,
-                      blurRadius: 30,
-                    )
-                  ],
-                ),
-                Text(
-                  "Daily Tasks",
-                  style: TextStyle(
-                      color: ThemeColors.white,
-                      fontSize: 18,
-                      overflow: TextOverflow.visible),
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
+    const Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: 32.0),
+          child: Column(
+            children: [
+              Icon(
+                Icons.task_alt,
+                size: 100,
+                color: ThemeColors.tertiary,
+                shadows: [
+                  Shadow(
+                    color: ThemeColors.background,
+                    blurRadius: 30,
+                  )
+                ],
+              ),
+              Text(
+                "Daily Tasks",
+                style: TextStyle(
+                    color: ThemeColors.white,
+                    fontSize: 18,
+                    overflow: TextOverflow.visible),
+              ),
+            ],
+          ),
+        )
+      ],
     ),
     //Other
-    Container(
-      child: const Column(
-        children: [
-          Padding(
-            padding: EdgeInsets.only(top: 32.0),
-            child: Column(
-              children: [
-                Icon(
-                  Icons.question_answer,
-                  size: 100,
-                  color: ThemeColors.tertiary,
-                  shadows: [
-                    Shadow(
-                      color: ThemeColors.background,
-                      blurRadius: 30,
-                    )
-                  ],
-                ),
-                Text(
-                  "Other",
-                  style: TextStyle(
-                      color: ThemeColors.white,
-                      fontSize: 18,
-                      overflow: TextOverflow.visible),
-                ),
-              ],
-            ),
-          )
-        ],
-      ),
+    const Column(
+      children: [
+        Padding(
+          padding: EdgeInsets.only(top: 32.0),
+          child: Column(
+            children: [
+              Icon(
+                Icons.question_answer,
+                size: 100,
+                color: ThemeColors.tertiary,
+                shadows: [
+                  Shadow(
+                    color: ThemeColors.background,
+                    blurRadius: 30,
+                  )
+                ],
+              ),
+              Text(
+                "Other",
+                style: TextStyle(
+                    color: ThemeColors.white,
+                    fontSize: 18,
+                    overflow: TextOverflow.visible),
+              ),
+            ],
+          ),
+        )
+      ],
     ),
     //HabitHeatMap(),
   ];

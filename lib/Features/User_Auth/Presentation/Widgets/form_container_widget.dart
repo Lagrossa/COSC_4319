@@ -38,8 +38,8 @@ class _FormContainerWidgetState extends State<FormContainerWidget> {
       decoration: BoxDecoration(
           color: Colors.grey.withOpacity(.35),
           borderRadius: BorderRadius.circular(10)),
-      child: new TextFormField(
-        style: TextStyle(color: Colors.blue),
+      child: TextFormField(
+        style: const TextStyle(color: Colors.blue),
         controller: widget.controller,
         keyboardType: widget.inputType,
         key: widget.key,
@@ -47,12 +47,12 @@ class _FormContainerWidgetState extends State<FormContainerWidget> {
         onSaved: widget.onSaved,
         validator: widget.validator,
         onFieldSubmitted: widget.onFieldSubmitted,
-        decoration: new InputDecoration(
+        decoration: InputDecoration(
             border: InputBorder.none,
             filled: true,
             hintText: widget.hintText,
-            hintStyle: TextStyle(color: Colors.black45),
-            suffixIcon: new GestureDetector(
+            hintStyle: const TextStyle(color: Colors.black45),
+            suffixIcon: GestureDetector(
               onTap: () {
                 setState(() {
                   _obscureText = !_obscureText;
@@ -63,7 +63,7 @@ class _FormContainerWidgetState extends State<FormContainerWidget> {
                       _obscureText ? Icons.visibility_off : Icons.visibility,
                       color: _obscureText == false ? Colors.blue : Colors.grey,
                     )
-                  : Text(""),
+                  : const Text(""),
             )),
       ),
     );
