@@ -108,7 +108,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                       child: TextFormField(
-                        controller: _usernameController,
+                        controller: _emailController,
                         obscureText: false,
                         decoration: InputDecoration(
                           labelText: "Email Address",
@@ -234,9 +234,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 20),
                           child: FFButtonWidget(
-                            onPressed: () async {
-                              //context.pushNamed('forgotPassword');
-                            },
+                            onPressed: () async {},
+                            //context.pushNamed('forgotPassword');
+
                             text: "Forgot Password?",
                             options: FFButtonOptions(
                               width: 170,
@@ -271,8 +271,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
                         ),
                         FFButtonWidget(
-                          onPressed: () async {
-                            /*
+                          onPressed: _signUp
+                          /*
         GoRouter.of(context).prepareAuthEvent();
         final user = await authManager.signInWithEmail(
           context,
@@ -283,7 +283,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           return;
         }
         context.goNamedAuth('MY_Card', context.mounted);*/
-                          },
+                          ,
                           text: "Log In",
                           options: FFButtonOptions(
                             width: 120,
@@ -389,7 +389,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   void _signUp() async {
-    String username = _usernameController.text;
+    //String username = _usernameController.text;
     String email = _emailController.text;
     String password = _passwordController.text;
 
