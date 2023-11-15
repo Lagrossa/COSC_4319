@@ -1,19 +1,18 @@
-//task item, information used for task functions
-class Task{
-  String? id;
-  String? taskText;
-  bool isDone;
-  int taskPrior;
+import 'package:flutter/material.dart';
 
-  Task({
-    required this.id,
-    required this.taskText,
-    required this.taskPrior,
-    this.isDone = false,
+class Task{
+  final String taskName;
+  final DateTime from;
+  final DateTime to;
+  final int priority;
+  final Color backgroundColor;
+
+  const Task({
+   required this.taskName,
+    required this.from,
+    required this.to,
+    required this.priority,
+    required this.backgroundColor,
   });
 
-  //list to store tasks
-  static List<Task> taskList(){
-    return [];
-  }
 }
