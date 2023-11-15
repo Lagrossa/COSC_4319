@@ -31,7 +31,9 @@ class taskScreenState extends State<taskScreen>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ThemeColors.background,
       appBar: AppBar(
+        backgroundColor: ThemeColors.background,
         title: Text('Tasks'),
         centerTitle: true,
       ),
@@ -63,11 +65,27 @@ class taskScreenState extends State<taskScreen>{
           ),
           Expanded(
             child: SfCalendar(
+              cellBorderColor: Colors.blue,
               view: calendarView,
               initialSelectedDate: DateTime.now(),
               controller: calendarController,
               dataSource: _events,
-              monthViewSettings: MonthViewSettings(appointmentDisplayMode: MonthAppointmentDisplayMode.appointment),
+              monthViewSettings: MonthViewSettings(
+                appointmentDisplayMode: MonthAppointmentDisplayMode.appointment,
+                monthCellStyle: MonthCellStyle(
+                  textStyle: TextStyle(color: Colors.white,),
+                ),
+              ),
+              headerStyle: CalendarHeaderStyle(
+                textStyle: TextStyle(color: Colors.white,),
+              ),
+              viewHeaderStyle: ViewHeaderStyle(
+                dayTextStyle: TextStyle(color: Colors.white),
+                dateTextStyle: TextStyle(color: Colors.white)
+              ),
+              timeSlotViewSettings: TimeSlotViewSettings(
+                timeTextStyle: TextStyle(color: Colors.white)
+              ),
             ),
           ),
         ],
