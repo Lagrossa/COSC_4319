@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:flutterflow_ui/flutterflow_ui.dart';
+import 'package:msh_checkbox/msh_checkbox.dart';
 import 'themeColors.dart';
 
 class HabitBox extends StatelessWidget {
   final String name;
   final bool completed;
-  final Function(bool?)? onChanged;
+  final Function(bool?) onChanged;
   final Function(BuildContext)? settingsTap;
   final Function(BuildContext)? deleteTap;
 
@@ -40,25 +42,75 @@ class HabitBox extends StatelessWidget {
                     topRight: Radius.circular(16)))
           ],
         ),
-        child: Container(
-            width: 400,
-            height: 90,
-            padding: EdgeInsets.all(24),
-            decoration: BoxDecoration(
-                color: ThemeColors.tertiary_on_select,
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(16),
-                    topLeft: Radius.circular(16))),
-            child: Row(
-              children: [
-                Checkbox.adaptive(
-                  value: completed,
-                  onChanged: onChanged,
-                  activeColor: ThemeColors.tertiary,
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            MSHCheckbox(
+              value: completed,
+              onChanged: onChanged,
+              size: 28,
+              style: MSHCheckboxStyle.fillFade,
+              uncheckedColor: ThemeColors.tertiary,
+              checkedColor: ThemeColors.button,
+            ),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      name,
+                      style: FlutterFlowTheme.of(context).titleMedium.override(
+                            fontFamily: 'Lexend',
+                            color: ThemeColors.button,
+                            fontSize: 16,
+                          ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+                      child: Text(
+                        "Description of task...",
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Lexend',
+                              color: ThemeColors.white,
+                            ),
+                      ),
+                    ),
+                  ],
                 ),
-                Text(name),
-              ],
-            )),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(
+                    "11/15/2023",
+                    textAlign: TextAlign.end,
+                    style: FlutterFlowTheme.of(context).titleSmall.override(
+                          fontFamily: 'Lexend',
+                          color: ThemeColors.button,
+                        ),
+                  ),
+                  /*Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+                    child: Text(
+                      "3h ago",
+                      textAlign: TextAlign.end,
+                      style: FlutterFlowTheme.of(context).bodyMedium,
+                    ),
+                  ),*/
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

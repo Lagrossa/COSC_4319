@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
         displayLarge: TextStyle(color: ThemeColors.secondary),
         displayMedium: TextStyle(color: ThemeColors.secondary),
         bodyLarge: TextStyle(color: ThemeColors.secondary),
-        bodyMedium: TextStyle(color: ThemeColors.secondary),
+        bodyMedium: TextStyle(color: ThemeColors.white),
         bodySmall: TextStyle(color: ThemeColors.secondary),
         titleLarge: TextStyle(color: ThemeColors.secondary),
         titleMedium: TextStyle(color: ThemeColors.secondary),
