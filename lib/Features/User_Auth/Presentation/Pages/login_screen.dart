@@ -40,6 +40,7 @@ class _LoginScreenState extends State<LoginScreen> {
       appBar: AppBar(
         backgroundColor: ThemeColors.background,
         title: const Text("Login"),
+        elevation: 0,
       ),
       body: Stack(
         children: [

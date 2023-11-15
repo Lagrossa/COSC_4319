@@ -36,6 +36,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       appBar: AppBar(
         backgroundColor: ThemeColors.background,
         title: const Text("Sign Up"),
+        elevation: 0,
       ),
       body: Stack(
         children: [
