@@ -234,10 +234,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 20),
                           child: FFButtonWidget(
-                            onPressed: () async {},
+                            onPressed: () async {
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => LoginScreen()),
+                                  (route) => false);
+                            },
                             //context.pushNamed('forgotPassword');
 
-                            text: "Forgot Password?",
+                            text: "Already have an account?",
                             options: FFButtonOptions(
                               width: 170,
                               height: 40,
