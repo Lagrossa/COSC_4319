@@ -109,6 +109,8 @@ dependencies:
   flutter_event_calendar: ^1.0.0
   easy_date_timeline: ^1.0.2
   msh_checkbox: ^2.0.1
+  flutter_svg: ^2.0.9
+  vector_graphics_compiler: ^1.1.9+1
   
 dev_dependencies:
   flutter_launcher_icons: 0.13.1
