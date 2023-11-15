@@ -2,6 +2,7 @@ import 'package:addvisor/Features/task_page/model/task.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
+//this will translate the task objects to appointment objects that are used by sfcalendar
 class TaskDataSource extends CalendarDataSource{
   TaskDataSource(List<Task> source){
     appointments = source;
@@ -21,4 +22,6 @@ class TaskDataSource extends CalendarDataSource{
   @override
   Color getColor(int index) => getTask(index).backgroundColor;
 
+  @override
+  bool isAllDay(int index) => getTask(index).isAllDay;
 }

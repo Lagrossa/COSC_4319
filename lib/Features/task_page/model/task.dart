@@ -6,6 +6,7 @@ class Task{
   final DateTime to;
   final int priority;
   final Color backgroundColor;
+  final bool isAllDay;
 
   const Task({
    required this.taskName,
@@ -13,6 +14,7 @@ class Task{
     required this.to,
     required this.priority,
     required this.backgroundColor,
+    required this.isAllDay
   });
 
 }

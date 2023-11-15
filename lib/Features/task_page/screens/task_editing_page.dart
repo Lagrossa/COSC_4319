@@ -25,6 +25,7 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
   late int prior;
   var priorOptions = ['1','2','3','4','5'];
   late Color backGround;
+  late bool allDay;
 
   @override
   void initState() {
@@ -34,6 +35,8 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
       fromDate = DateTime.now();
       toDate = DateTime.now().add(Duration(hours: 2));
       prior = 1;
+      backGround = Colors.blue;
+      allDay = false;
     }
   }
 
@@ -45,7 +48,7 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    //backgroundColor: ThemeColors.background,
+    backgroundColor: ThemeColors.background,
     appBar: AppBar(
       backgroundColor: ThemeColors.background,
       leading:  CloseButton(),
@@ -61,7 +64,7 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
             buildTitle(),
             SizedBox(height: 12,),
             buildDateTimePickers(),
-            buildPrior(),
+            buildPriorAllDay(),
           ],
         ),
       ),
@@ -81,10 +84,11 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
   ];
 
   Widget buildTitle() => TextFormField(
-    style: TextStyle(fontSize: 24),
+    style: TextStyle(fontSize: 24, color: Colors.white),
     decoration: InputDecoration(
       border: UnderlineInputBorder(),
       hintText: 'Add Task',
+      hintStyle: TextStyle(color: Colors.grey),
     ),
     onFieldSubmitted: (_) => saveForm(),
     validator: (title) =>
@@ -203,7 +207,7 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
     required VoidCallback onClicked,
   }) =>
       ListTile(
-        title: Text(text),
+        title: Text(text, style: TextStyle(color: Colors.white),),
         trailing: Icon(Icons.arrow_drop_down),
         onTap: onClicked,
       );
@@ -215,23 +219,37 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
       Column(
         crossAxisAlignment:  CrossAxisAlignment.start,
         children: [
-          Text(header, style: TextStyle(fontWeight: FontWeight.bold),),
+          Text(header, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),),
           child,
         ],
       );
 
-  Widget buildPrior() => buildHeader(
-    header: 'Priority',
-    child: priorDropdown(),
+  Widget buildPriorAllDay() => Row(
+    children: [
+      Expanded(
+        flex: 2,
+        child: buildHeader(
+          header: 'Priority',
+          child: priorDropdown(),
+        ),
+      ),
+      Expanded(
+        child: buildHeader(
+          header: 'IsAllDay',
+          child: allDayCheck(),
+        ),
+      ),
+    ],
   );
 
   Widget priorDropdown() =>
     DropdownButton<int>(
       value: prior,
+      dropdownColor: ThemeColors.background,
       items: <int>[1,2,3,4,5].map((int menuPrior) {
         return DropdownMenuItem<int>(
           value: menuPrior,
-          child: Text(menuPrior.toString()),
+          child: Text(menuPrior.toString(), style: TextStyle(color: Colors.white),),
         );
       }).toList(),
       onChanged: (newPrior) {
@@ -239,6 +257,21 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
           prior = newPrior!;
         });
       },
+    );
+
+  Widget allDayCheck() =>
+    Checkbox(
+      value: allDay,
+      checkColor: Colors.black,
+      activeColor: Colors.grey,
+      onChanged: (bool? boxValue) {
+        setState(() {
+          allDay = boxValue!;
+        });
+      },
+      side: BorderSide(
+        color: Colors.white,
+      ),
     );
 
   Future saveForm() async {
@@ -267,6 +300,7 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
         to: toDate,
         priority: prior,
         backgroundColor: backGround,
+        isAllDay: allDay,
       );
 
       //would add here
