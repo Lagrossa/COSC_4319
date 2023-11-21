@@ -1,13 +1,16 @@
-import 'package:addvisor/Features/task_page/screens/task_editing_page.dart';
 import 'package:addvisor/components/drawer_nav.dart';
 import 'package:addvisor/components/nav_bar.dart';
 import 'package:addvisor/components/themeColors.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:addvisor/Features/task_page/model/task.dart';
 import 'package:addvisor/Features/task_page/model/task_data_source.dart';
-
+import 'package:addvisor/Features/task_page/screens/task_editing_page.dart';
 
 class taskScreen extends StatefulWidget{
   const taskScreen({Key? key}) : super(key: key);
@@ -18,10 +21,15 @@ class taskScreen extends StatefulWidget{
 class taskScreenState extends State<taskScreen>{
   List<Task> taskList = <Task>[];
   TaskDataSource? _events;
+  late DatabaseReference dbRef;
+  late User currUser;
+
 
   @override
   void initState(){
     _events = TaskDataSource(taskList);
+    currUser = FirebaseAuth.instance.currentUser!;
+    dbRef = FirebaseDatabase.instance.ref().child(currUser.uid).child('Tasks');
     super.initState();
   }
 
@@ -104,5 +112,14 @@ class taskScreenState extends State<taskScreen>{
     _events?.appointments!.add(newTask);
     _events?.notifyListeners(
         CalendarDataSourceAction.add, <Task>[newTask]);
+    Map<String, String> addedTask = {
+      'TaskName' : newTask.taskName,
+      'StartTime' : newTask.from.toString(),
+      'EndTime' : newTask.to.toString(),
+      'Priority' : newTask.priority.toString(),
+      'Color' : newTask.backgroundColor.toString(),
+      'AllDay?' : newTask.isAllDay.toString(),
+    };
+    dbRef.push().set(addedTask);
   }
 }
