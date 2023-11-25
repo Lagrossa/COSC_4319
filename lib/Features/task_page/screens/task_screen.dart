@@ -12,6 +12,7 @@ import 'package:intl/intl.dart';
 import 'package:addvisor/Features/task_page/model/task.dart';
 import 'package:addvisor/Features/task_page/model/task_data_source.dart';
 import 'package:addvisor/Features/task_page/screens/task_editing_page.dart';
+import 'package:addvisor/Features/task_page/screens/remove_task_page.dart';
 
 class taskScreen extends StatefulWidget{
   const taskScreen({Key? key}) : super(key: key);
@@ -42,6 +43,14 @@ class taskScreenState extends State<taskScreen>{
         backgroundColor: ThemeColors.background,
         title: Text('Tasks'),
         centerTitle: true,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.remove, color: Colors.white,),
+            onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => removeTask())
+            ),
+          )
+        ],
       ),
       drawer: DrawerNav(),
       body: Column(
