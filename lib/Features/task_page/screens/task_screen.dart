@@ -131,101 +131,10 @@ class taskScreenState extends State<taskScreen>{
         child: Icon(Icons.add, color: Colors.white,),
         backgroundColor: Colors.blue,
         onPressed: () => Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => TaskEditingPage(addTask: addTask))
+          MaterialPageRoute(builder: (context) => TaskEditingPage())
         ),
       ),
       bottomNavigationBar: const AppNavBar(),
     );
   }
-  void addTask(Task newTask){
-    Map<String, dynamic> addedTask = {
-      'TaskName' : newTask.taskName,
-      'StartTime' : newTask.from.toString(),
-      'EndTime' : newTask.to.toString(),
-      'Priority' : newTask.priority,
-      'AllDay?' : newTask.isAllDay,
-    };
-    dbRef.push().set(addedTask);
-  }
 }
-
-/*
-class taskScreen extends StatefulWidget{
-  @override
-  taskScreenState createState() => taskScreenState();
-}
-
-class taskScreenState extends State<taskScreen> {
-  final _dbRef = FirebaseDatabase.instance.ref().child('Tasks');
-
-
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title:  Text('Testing'),
-      ),
-      body: Center(
-        child: StreamBuilder(
-          stream: _dbRef.orderByKey().onValue,
-          builder: (context, snapshot){
-            final taskList = <Task>[];
-            if(snapshot.hasData && snapshot.data!.snapshot.exists){
-              final myStuff = Map<String, dynamic>.from(
-                  (snapshot.data! as DatabaseEvent).snapshot.value as Map
-              );
-              myStuff.forEach((key, value) {
-                final nextStuff = Map<String, dynamic>.from(value);
-                /*final orderTile = ListTile(
-                  title: Text(nextStuff['Name'].toString()),
-                  subtitle: Text(nextStuff['Time'].toString()),
-                );*/
-                //tileList.add(orderTile);
-                final addedTask = Task(
-                  taskName: nextStuff['TaskName'],
-                  from: DateTime.parse(nextStuff['StartTime']),
-                  to: DateTime.parse(nextStuff['EndTime']),
-                  priority: nextStuff['Priority'],
-                  backgroundColor: Colors.blue,
-                  isAllDay: nextStuff['AllDay?']
-                );
-                taskList.add(addedTask);
-              });
-            }
-            return SfCalendar(
-              dataSource: TaskDataSource(taskList),
-            );
-          },
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add, color: Colors.white,),
-        onPressed: () {
-          final newThing = <String, dynamic> {
-            'TaskName' : 'Testing',
-            'StartTime' : DateTime.now().toString(),
-            'EndTime' : DateTime.now().add(Duration(hours: 2)).toString(),
-            'Priority' : 4,
-            'AllDay?' : false,
-          };
-          _dbRef.push().set(newThing)
-          .then((_) => print('Thing has been written'))
-          .catchError(
-              (error) => print('Got an error $error'));
-        },
-      ),
-      bottomNavigationBar: const AppNavBar(),
-    );
-  }
-
-
-
-}*/

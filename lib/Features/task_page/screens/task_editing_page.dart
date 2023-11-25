@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:addvisor/components/themeColors.dart';
 import 'package:addvisor/Features/task_page/model/task.dart';
 import 'package:addvisor/Features/task_page/utils.dart';
@@ -6,12 +9,10 @@ import 'package:addvisor/Features/task_page/utils.dart';
 
 class TaskEditingPage extends StatefulWidget{
   final Task? task;
-  final addTask;
 
   const TaskEditingPage({
     Key? key,
     this.task,
-    required this.addTask,
   }) : super(key: key);
   @override
   _TaskEditingPageState createState() => _TaskEditingPageState();
@@ -24,18 +25,20 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
   late DateTime toDate;
   late int prior;
   var priorOptions = ['1','2','3','4','5'];
-  late Color backGround;
   late bool allDay;
+  late DatabaseReference dbRef;
+  late User currUser;
 
   @override
   void initState() {
     super.initState();
 
+    currUser = FirebaseAuth.instance.currentUser!;
+    dbRef = FirebaseDatabase.instance.ref().child(currUser.uid).child('Tasks');
     if(widget.task == null){
       fromDate = DateTime.now();
       toDate = DateTime.now().add(Duration(hours: 2));
       prior = 1;
-      backGround = Colors.blue;
       allDay = false;
     }
   }
@@ -277,36 +280,19 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
   Future saveForm() async {
     final isValid = _formKey.currentState!.validate();
     if(isValid) {
-      switch(prior){
-        case 1:
-          backGround = Colors.blue;
-          break;
-        case 2:
-          backGround = Colors.green;
-          break;
-        case 3:
-          backGround = Colors.amber[400]!;
-          break;
-        case 4:
-          backGround = Colors.orange;
-          break;
-        case 5:
-          backGround = Colors.red;
-          break;
-      }
-      final task = Task(
-        taskName: titleController.text,
-        from: fromDate,
-        to: toDate,
-        priority: prior,
-        backgroundColor: backGround,
-        isAllDay: allDay,
-      );
+      final addedTask = <String, dynamic> {
+        'TaskName' : titleController.text,
+        'StartTime' : fromDate.toString(),
+        'EndTime' : toDate.toString(),
+        'Priority' : prior,
+        'AllDay?' : allDay
+      };
+      dbRef.push().set(addedTask)
+          .then((_) => print('Task has been written'))
+          .catchError(
+              (error) => print('Got an error $error'));
 
-      //would add here
-      widget.addTask(task);
 
-      //IT WORKS!!!!!!!!!
       Navigator.pop(context);
     }
   }
