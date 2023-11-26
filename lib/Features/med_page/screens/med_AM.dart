@@ -3,6 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:addvisor/components/themeColors.dart';
+import 'package:flutterflow_ui/flutterflow_ui.dart';
 
 class medsAM extends StatefulWidget{
   const medsAM({Key? key}) : super(key: key);
@@ -33,11 +34,20 @@ class medsAMState extends State<medsAM>{
   }
 
   Widget listMeds({required Map medList}){
+    String currDate = DateFormat('yyy-MM-dd').format(DateTime.now());
+    if(currDate.compareTo(medList['SavedDate']) > 0){
+      dbRef.child(medList['key']).child('Taken').set(false);
+      dbRef.child(medList['key']).child('SavedDate').set(currDate);
+    }
+
     return Container(
       margin: const EdgeInsets.all(10),
       padding: const EdgeInsets.all(10),
       height: 100,
-      color: Colors.orange,
+      decoration: BoxDecoration(
+        color: Colors.orange,
+        borderRadius: BorderRadius.circular(20),
+      ),
       child: Column(
         children: [
           Row(
@@ -107,9 +117,11 @@ class medsAMState extends State<medsAM>{
           final medName = await addMed();
           if(medName == null || medName.isEmpty) return;
 
+          String savedDate = DateFormat('yyy-MM-dd').format(DateTime.now());
           final addedMed = <String, dynamic>{
             'MedName' : medName,
             'Taken' : false,
+            'SavedDate' : savedDate,
           };
           dbRef.push().set(addedMed);
         },
