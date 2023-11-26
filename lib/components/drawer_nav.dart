@@ -16,40 +16,45 @@ class DrawerNav extends StatelessWidget {
                 child: Icon(
                   Icons.person,
                   size: 100,
+                  color: Colors.white,
                 ),
               ),
             ),
             ListTile(
-              leading: Icon(Icons.home),
-              title: Text('Home'),
+              leading: Icon(Icons.home, color: Colors.white,),
+              title: Text('Home', style: TextStyle(color: Colors.white),),
               onTap: () {
                 Navigator.pushNamed(context, "/home");
                 AppNavBar.currentScreen = Screen.Home;
               },
             ),
             ListTile(
-              leading: Icon(Icons.checklist_sharp),
-              title: Text('Tasks'),
+              leading: Icon(Icons.checklist_sharp, color: Colors.white,),
+              title: Text('Tasks', style: TextStyle(color: Colors.white),),
               onTap: () {
                 Navigator.pushNamed(context, "/tasks");
                 AppNavBar.currentScreen = Screen.Tasks;
               },
             ),
             ListTile(
-              leading: Icon(Icons.medical_services_outlined),
-              title: Text('Medication'),
+              leading: Icon(Icons.medical_services_outlined, color: Colors.white,),
+              title: Text('Medication', style: TextStyle(color: Colors.white),),
+              onTap: () {
+                Navigator.pushNamed(context, "/meds");
+                AppNavBar.currentScreen = Screen.Tasks;
+              },
             ),
             ListTile(
-              leading: Icon(Icons.event_repeat),
-              title: Text('Trackers'),
+              leading: Icon(Icons.event_repeat, color: Colors.white,),
+              title: Text('Trackers', style: TextStyle(color: Colors.white),),
               onTap: () {
                 Navigator.pushNamed(context, "/trackers");
                 AppNavBar.currentScreen = Screen.Trackers;
               },
             ),
             ListTile(
-              leading: Icon(Icons.exit_to_app),
-              title: Text('Sign Out'),
+              leading: Icon(Icons.exit_to_app, color: Colors.white,),
+              title: Text('Sign Out', style: TextStyle(color: Colors.white),),
               onTap: () {
                 FirebaseAuth.instance.signOut();
                 Navigator.pushNamed(context, "/login");

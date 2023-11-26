@@ -4,6 +4,7 @@ import 'package:addvisor/Features/User_Auth/Presentation/Pages/login_screen.dart
 import 'package:addvisor/Features/User_Auth/Presentation/Pages/signUp_screen.dart';
 import 'package:addvisor/Features/User_Auth/Presentation/Pages/habit_tracker.dart';
 import 'package:addvisor/Features/User_Auth/Presentation/Pages/trackers_directory.dart';
+import 'package:addvisor/Features/med_page/screens/med_tracker.dart';
 import 'package:addvisor/components/themeColors.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -65,6 +66,7 @@ class MyApp extends StatelessWidget {
         '/trackers': (context) => TrackersDirectory(),
         '/habits': (context) => HabitScreen(),
         '/tasks': (context) => taskScreen(),
+        '/meds' : (context) => medScreen(),
       },
     );
   }
