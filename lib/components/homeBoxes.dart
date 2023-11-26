@@ -1,11 +1,10 @@
 import 'package:addvisor/components/themeColors.dart';
 import 'package:flutter/material.dart';
-import 'themeColors.dart';
 
 class HomeBoxes extends StatelessWidget {
   final int index;
 
-  HomeBoxes({
+  HomeBoxes({super.key, 
     required this.index,
   });
 

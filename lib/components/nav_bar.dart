@@ -48,8 +48,8 @@ class AppNavBar extends StatelessWidget {
           backgroundColor: ThemeColors.background,
           activeColor: ThemeColors.button,
           color: ThemeColors.tertiary,
-          padding: EdgeInsets.all(16),
-          tabBackgroundColor: Color.fromARGB(255, 9, 42, 58),
+          padding: const EdgeInsets.all(16),
+          tabBackgroundColor: const Color.fromARGB(255, 9, 42, 58),
           selectedIndex: GetIndexFromScreen(AppNavBar.currentScreen),
           onTabChange: (index) {
             switch (index) {
@@ -69,7 +69,7 @@ class AppNavBar extends StatelessWidget {
             }
             AppNavBar.currentScreen = GetScreenFromIndex(index);
           },
-          tabs: [
+          tabs: const [
             GButton(icon: Icons.settings, text: "Settings"),
             GButton(icon: Icons.calendar_month, text: "Tasks"),
             GButton(icon: Icons.home, text: "Home"),

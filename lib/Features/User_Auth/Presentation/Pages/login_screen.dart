@@ -14,6 +14,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterflow_ui/flutterflow_ui.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -21,8 +23,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final FirebaseAuthService _auth = FirebaseAuthService();
   final GlobalKey<FormState> _key = GlobalKey<FormState>();
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   String errorMess = '';
 
   @override
@@ -34,10 +36,10 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+    final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
     return Scaffold(
-      key: _scaffoldKey,
-      resizeToAvoidBottomInset: true,
+      key: scaffoldKey,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: ThemeColors.background,
         title: const Text("Login"),
@@ -55,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(
               width: MediaQuery.sizeOf(context).width,
               height: MediaQuery.sizeOf(context).height,
-              decoration: BoxDecoration(),
+              decoration: const BoxDecoration(),
               child: Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
                 child: Column(
@@ -122,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                                    const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                                 child: TextFormField(
                                   controller: _emailController,
                                   validator: validateEmail,
@@ -130,7 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   decoration: InputDecoration(
                                     labelText: "Email Address",
                                     labelStyle:
-                                        TextStyle(color: ThemeColors.white),
+                                        const TextStyle(color: ThemeColors.white),
                                     hintText: "Enter your email...",
                                     hintStyle: TextStyle(
                                       fontSize: FlutterFlowTheme.of(context)
@@ -148,47 +150,47 @@ class _LoginScreenState extends State<LoginScreen> {
                                           .fontStyle,
                                     ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 1,
                                       ),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 1,
                                       ),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     errorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 1,
                                       ),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     focusedErrorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 1,
                                       ),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     filled: true,
-                                    fillColor: Color(0xFF7E6F7072),
+                                    fillColor: const Color(0xff7e6f7072),
                                     contentPadding:
-                                        EdgeInsetsDirectional.fromSTEB(
+                                        const EdgeInsetsDirectional.fromSTEB(
                                             20, 24, 20, 24),
                                   ),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: ThemeColors.white,
                                   ),
                                 ),
                               ),
                               Padding(
                                 padding:
-                                    EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                                    const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                                 child: TextFormField(
                                   controller: _passwordController,
                                   validator: validatePassword,
@@ -196,7 +198,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   decoration: InputDecoration(
                                     labelText: "Password",
                                     labelStyle:
-                                        TextStyle(color: ThemeColors.white),
+                                        const TextStyle(color: ThemeColors.white),
                                     hintText: "Enter your password...",
                                     hintStyle: TextStyle(
                                       fontSize: FlutterFlowTheme.of(context)
@@ -214,40 +216,40 @@ class _LoginScreenState extends State<LoginScreen> {
                                           .fontStyle,
                                     ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 1,
                                       ),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     focusedBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 1,
                                       ),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     errorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 1,
                                       ),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     focusedErrorBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 1,
                                       ),
                                       borderRadius: BorderRadius.circular(8),
                                     ),
                                     filled: true,
-                                    fillColor: Color(0xFF7E6F7072),
+                                    fillColor: const Color(0xff7e6f7072),
                                     contentPadding:
-                                        EdgeInsetsDirectional.fromSTEB(
+                                        const EdgeInsetsDirectional.fromSTEB(
                                             20, 20, 20, 20),
                                   ),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: ThemeColors.white,
                                   ),
                                 ),
@@ -257,7 +259,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 child: Center(
                                   child: Text(
                                     errorMess,
-                                    style: TextStyle(color: Colors.red),
+                                    style: const TextStyle(color: Colors.red),
                                   ),
                                 ),
                               ),
@@ -267,7 +269,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0, 20, 0, 20),
                                     child: FFButtonWidget(
                                       onPressed: () async {
@@ -275,7 +277,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    SignUpScreen()),
+                                                    const SignUpScreen()),
                                             (route) => false);
                                       },
                                       //context.pushNamed('forgotPassword');
@@ -284,12 +286,12 @@ class _LoginScreenState extends State<LoginScreen> {
                                       options: FFButtonOptions(
                                         width: 170,
                                         height: 40,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0, 0, 0, 0),
                                         iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
+                                            const EdgeInsetsDirectional.fromSTEB(
                                                 0, 0, 0, 0),
-                                        color: Color(0x001A1F24),
+                                        color: const Color(0x001A1F24),
                                         textStyle: TextStyle(
                                           fontSize: FlutterFlowTheme.of(context)
                                               .bodySmall
@@ -309,7 +311,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                                   .fontStyle,
                                         ),
                                         elevation: 0,
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Colors.transparent,
                                           width: 1,
                                         ),
@@ -344,16 +346,16 @@ class _LoginScreenState extends State<LoginScreen> {
                                     options: FFButtonOptions(
                                       width: 120,
                                       height: 50,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0, 0, 0, 0),
                                       iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               0, 0, 0, 0),
                                       color: ThemeColors.button,
                                       textStyle: FlutterFlowTheme.of(context)
                                           .titleSmall,
                                       elevation: 3,
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Colors.transparent,
                                         width: 1,
                                       ),

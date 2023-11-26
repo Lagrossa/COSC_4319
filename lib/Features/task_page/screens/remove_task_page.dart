@@ -6,7 +6,7 @@ import 'package:addvisor/components/themeColors.dart';
 import 'package:flutterflow_ui/flutterflow_ui.dart';
 
 class removeTask extends StatefulWidget{
-  const removeTask({Key? key}) : super(key: key);
+  const removeTask({super.key});
 
   @override
   State<removeTask> createState() => removeTaskState();
@@ -39,7 +39,7 @@ class removeTaskState extends State<removeTask>{
     }
     else{
       displayText = DateFormat('yyyy-MM-dd HH:mm').format(DateTime.parse(taskList['StartTime'])).toString();
-      displayText += '\n' + DateFormat('yyyy-MM-dd HH:mm').format(DateTime.parse(taskList['EndTime'])).toString();;
+      displayText += '\n${DateFormat('yyyy-MM-dd HH:mm').format(DateTime.parse(taskList['EndTime']))}';
     }
     return Container(
       margin: const EdgeInsets.all(10),
@@ -52,12 +52,12 @@ class removeTaskState extends State<removeTask>{
         children: [
           Text(
             taskList['TaskName'],
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Colors.black),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Colors.black),
           ),
           const SizedBox(height: 5,),
           Text(
             displayText,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Colors.black),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Colors.black),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -67,7 +67,7 @@ class removeTaskState extends State<removeTask>{
                 onTap: () {
                   dbRef.child(taskList['key']).remove();
                 },
-                child: Row(
+                child: const Row(
                   children: [
                     Icon(
                       Icons.delete,
@@ -89,9 +89,9 @@ class removeTaskState extends State<removeTask>{
       backgroundColor: ThemeColors.background,
       appBar: AppBar(
         backgroundColor: ThemeColors.background,
-        title: Text('Delete tasks?'),
+        title: const Text('Delete tasks?'),
       ),
-      body: Container(
+      body: SizedBox(
         height: double.infinity,
         child: FirebaseAnimatedList(
           query: dbQuery,

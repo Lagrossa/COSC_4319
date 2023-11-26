@@ -3,6 +3,8 @@ import 'package:flutter_heatmap_calendar/flutter_heatmap_calendar.dart';
 import 'themeColors.dart';
 
 class HabitHeatMap extends StatelessWidget {
+  const HabitHeatMap({super.key});
+
   @override
   Widget build(BuildContext context) {
     int hMapLength = 40;

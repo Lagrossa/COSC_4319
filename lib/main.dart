@@ -58,13 +58,13 @@ class MyApp extends StatelessWidget {
         useMaterial3: false,
       ),*/
       routes: {
-        '/': (context) => LoadScreen(child: LoginScreen()),
-        '/login': (context) => LoginScreen(),
-        '/signUp': (context) => SignUpScreen(),
-        '/home': (context) => HomeScreen(),
-        '/trackers': (context) => TrackersDirectory(),
-        '/habits': (context) => HabitScreen(),
-        '/tasks': (context) => taskScreen(),
+        '/': (context) => const LoadScreen(child: LoginScreen()),
+        '/login': (context) => const LoginScreen(),
+        '/signUp': (context) => const SignUpScreen(),
+        '/home': (context) => const HomeScreen(),
+        '/trackers': (context) => const TrackersDirectory(),
+        '/habits': (context) => const HabitScreen(),
+        '/tasks': (context) => const taskScreen(),
       },
     );
   }

@@ -146,8 +146,8 @@ class TrackersDirectory extends StatelessWidget {
           ),
         ]),
       ),
-      drawer: DrawerNav(),
-      bottomNavigationBar: AppNavBar(),
+      drawer: const DrawerNav(),
+      bottomNavigationBar: const AppNavBar(),
     );
   }
 }

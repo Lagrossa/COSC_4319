@@ -26,7 +26,7 @@ class HabitBox extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Slidable(
         endActionPane: ActionPane(
-          motion: StretchMotion(),
+          motion: const StretchMotion(),
           children: [
             SlidableAction(
               onPressed: settingsTap,
@@ -37,7 +37,7 @@ class HabitBox extends StatelessWidget {
                 onPressed: deleteTap,
                 backgroundColor: ThemeColors.button,
                 icon: Icons.delete_forever,
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                     bottomRight: Radius.circular(16),
                     topRight: Radius.circular(16)))
           ],
@@ -55,7 +55,7 @@ class HabitBox extends StatelessWidget {
             ),
             Expanded(
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -70,7 +70,7 @@ class HabitBox extends StatelessWidget {
                           ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
                       child: Text(
                         "Description of task...",
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -84,7 +84,7 @@ class HabitBox extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
+              padding: const EdgeInsetsDirectional.fromSTEB(12, 0, 12, 0),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,

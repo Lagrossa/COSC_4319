@@ -60,7 +60,7 @@ class _HabitScreenState extends State<HabitScreen> {
 
   void createHabit() {
     showDialog(
-      context: this.context,
+      context: context,
       builder: (context) {
         return AlertboxDialog(
           controller: newHabitNameController,
@@ -77,13 +77,13 @@ class _HabitScreenState extends State<HabitScreen> {
       habitList.add([newHabitNameController.text, false]);
     });
     newHabitNameController.clear();
-    Navigator.of(context as BuildContext).pop();
+    Navigator.of(context).pop();
     updatePercent();
   }
 
   void cancelHabitBox() {
     newHabitNameController.clear();
-    Navigator.of(context as BuildContext).pop();
+    Navigator.of(context).pop();
   }
 
   void openHabitEdit(int index) {
@@ -121,7 +121,7 @@ class _HabitScreenState extends State<HabitScreen> {
       numCompleted = habitList[x][1] == true ? numCompleted + 1 : numCompleted;
     }
     percentCompleted =
-        habitList.length > 0 ? numCompleted / habitList.length : 0;
+        habitList.isNotEmpty ? numCompleted / habitList.length : 0;
     print(percentCompleted);
   }
 
@@ -130,9 +130,9 @@ class _HabitScreenState extends State<HabitScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ThemeColors.background,
-        title: Text("Habit Tracker"),
+        title: const Text("Habit Tracker"),
       ),
-      drawer: DrawerNav(),
+      drawer: const DrawerNav(),
       backgroundColor: ThemeColors.background,
       floatingActionButton: AddTrackerActionButton(
         onPressed: () => createHabit(),
@@ -155,7 +155,7 @@ class _HabitScreenState extends State<HabitScreen> {
               circularStrokeCap: CircularStrokeCap.round,
               center: Text(
                 '${(percentCompleted * 100).truncate()} %',
-                style: TextStyle(fontSize: (20)),
+                style: const TextStyle(fontSize: (20)),
               ),
             ),
           ),
@@ -191,7 +191,7 @@ class _HabitScreenState extends State<HabitScreen> {
           ),
         ),
       ]),
-      bottomNavigationBar: AppNavBar(),
+      bottomNavigationBar: const AppNavBar(),
     );
   }
 }

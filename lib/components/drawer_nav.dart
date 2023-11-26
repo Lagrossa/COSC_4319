@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class DrawerNav extends StatelessWidget {
+  const DrawerNav({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -11,7 +13,7 @@ class DrawerNav extends StatelessWidget {
         color: ThemeColors.background,
         child: ListView(
           children: [
-            DrawerHeader(
+            const DrawerHeader(
               child: Center(
                 child: Icon(
                   Icons.person,
@@ -20,36 +22,36 @@ class DrawerNav extends StatelessWidget {
               ),
             ),
             ListTile(
-              leading: Icon(Icons.home),
-              title: Text('Home'),
+              leading: const Icon(Icons.home),
+              title: const Text('Home'),
               onTap: () {
                 Navigator.pushNamed(context, "/home");
                 AppNavBar.currentScreen = Screen.Home;
               },
             ),
             ListTile(
-              leading: Icon(Icons.checklist_sharp),
-              title: Text('Tasks'),
+              leading: const Icon(Icons.checklist_sharp),
+              title: const Text('Tasks'),
               onTap: () {
                 Navigator.pushNamed(context, "/tasks");
                 AppNavBar.currentScreen = Screen.Tasks;
               },
             ),
-            ListTile(
+            const ListTile(
               leading: Icon(Icons.medical_services_outlined),
               title: Text('Medication'),
             ),
             ListTile(
-              leading: Icon(Icons.event_repeat),
-              title: Text('Trackers'),
+              leading: const Icon(Icons.event_repeat),
+              title: const Text('Trackers'),
               onTap: () {
                 Navigator.pushNamed(context, "/trackers");
                 AppNavBar.currentScreen = Screen.Trackers;
               },
             ),
             ListTile(
-              leading: Icon(Icons.exit_to_app),
-              title: Text('Sign Out'),
+              leading: const Icon(Icons.exit_to_app),
+              title: const Text('Sign Out'),
               onTap: () {
                 FirebaseAuth.instance.signOut();
                 Navigator.pushNamed(context, "/login");

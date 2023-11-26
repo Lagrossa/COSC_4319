@@ -3,11 +3,9 @@ import 'package:addvisor/components/nav_bar.dart';
 import 'package:addvisor/components/themeColors.dart';
 
 import 'package:flutter/material.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:intl/intl.dart';
 
 import 'package:addvisor/Features/task_page/model/task.dart';
 import 'package:addvisor/Features/task_page/model/task_data_source.dart';
@@ -15,7 +13,7 @@ import 'package:addvisor/Features/task_page/screens/task_editing_page.dart';
 import 'package:addvisor/Features/task_page/screens/remove_task_page.dart';
 
 class taskScreen extends StatefulWidget{
-  const taskScreen({Key? key}) : super(key: key);
+  const taskScreen({super.key});
   @override
   taskScreenState createState() => taskScreenState();
 }
@@ -41,18 +39,18 @@ class taskScreenState extends State<taskScreen>{
       backgroundColor: ThemeColors.background,
       appBar: AppBar(
         backgroundColor: ThemeColors.background,
-        title: Text('Tasks'),
+        title: const Text('Tasks'),
         centerTitle: true,
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.remove, color: Colors.white,),
+            icon: const Icon(Icons.remove, color: Colors.white,),
             onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => removeTask())
+                MaterialPageRoute(builder: (context) => const removeTask())
             ),
           )
         ],
       ),
-      drawer: DrawerNav(),
+      drawer: const DrawerNav(),
       body: Column(
         children: [
           Row(
@@ -63,19 +61,19 @@ class taskScreenState extends State<taskScreen>{
                   calendarView = CalendarView.month;
                   calendarController.view = calendarView;
                 });
-              }, child: Text('Month View')),
+              }, child: const Text('Month View')),
               OutlinedButton(onPressed: () {
                 setState(() {
                   calendarView = CalendarView.week;
                   calendarController.view = calendarView;
                 });
-              }, child: Text('Week View')),
+              }, child: const Text('Week View')),
               OutlinedButton(onPressed: () {
                 setState(() {
                   calendarView = CalendarView.day;
                   calendarController.view = calendarView;
                 });
-              }, child: Text('Day View')),
+              }, child: const Text('Day View')),
             ],
           ),
           Expanded(
@@ -85,7 +83,7 @@ class taskScreenState extends State<taskScreen>{
                 final taskList = <Task>[];
                 if(snapshot.hasData && snapshot.data!.snapshot.exists){
                   final fullList = Map<String, dynamic>.from(
-                      (snapshot.data! as DatabaseEvent).snapshot.value as Map
+                      (snapshot.data!).snapshot.value as Map
                   );
                   fullList.forEach((key, value) {
                     final currEntry = Map<String,dynamic>.from(value);
@@ -114,20 +112,20 @@ class taskScreenState extends State<taskScreen>{
                   initialSelectedDate: DateTime.now(),
                   controller: calendarController,
                   dataSource: TaskDataSource(taskList),
-                  monthViewSettings: MonthViewSettings(
+                  monthViewSettings: const MonthViewSettings(
                     appointmentDisplayMode: MonthAppointmentDisplayMode.appointment,
                     monthCellStyle: MonthCellStyle(
                       textStyle: TextStyle(color: Colors.white,),
                     ),
                   ),
-                  headerStyle: CalendarHeaderStyle(
+                  headerStyle: const CalendarHeaderStyle(
                     textStyle: TextStyle(color: Colors.white,),
                   ),
-                  viewHeaderStyle: ViewHeaderStyle(
+                  viewHeaderStyle: const ViewHeaderStyle(
                       dayTextStyle: TextStyle(color: Colors.white),
                       dateTextStyle: TextStyle(color: Colors.white)
                   ),
-                  timeSlotViewSettings: TimeSlotViewSettings(
+                  timeSlotViewSettings: const TimeSlotViewSettings(
                       timeTextStyle: TextStyle(color: Colors.white)
                   ),
                 );
@@ -137,11 +135,11 @@ class taskScreenState extends State<taskScreen>{
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add, color: Colors.white,),
         backgroundColor: Colors.blue,
         onPressed: () => Navigator.of(context).push(
-          MaterialPageRoute(builder: (context) => TaskEditingPage())
+          MaterialPageRoute(builder: (context) => const TaskEditingPage())
         ),
+        child: const Icon(Icons.add, color: Colors.white,),
       ),
       bottomNavigationBar: const AppNavBar(),
     );

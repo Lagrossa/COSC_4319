@@ -2,13 +2,10 @@ import 'package:addvisor/components/addtracker.dart';
 import 'package:addvisor/components/alertbox_dialog.dart';
 import 'package:addvisor/components/drawer_nav.dart';
 import 'package:addvisor/components/habitBox.dart';
-import 'package:addvisor/components/habit_heat_map.dart';
-import 'package:addvisor/components/homeBoxes.dart';
 import 'package:addvisor/components/nav_bar.dart';
 import 'package:addvisor/components/themeColors.dart';
 import 'package:easy_date_timeline/easy_date_timeline.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_event_calendar/flutter_event_calendar.dart';
 import 'package:flutterflow_ui/flutterflow_ui.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -31,7 +28,7 @@ class _HomeScreen extends State<HomeScreen> {
 
   void createHabit() {
     showDialog(
-      context: this.context,
+      context: context,
       builder: (context) {
         return AlertboxDialog(
           controller: newHabitNameController,
@@ -48,12 +45,12 @@ class _HomeScreen extends State<HomeScreen> {
       habitList.add([newHabitNameController.text, false]);
     });
     newHabitNameController.clear();
-    Navigator.of(context as BuildContext).pop();
+    Navigator.of(context).pop();
   }
 
   void cancelHabitBox() {
     newHabitNameController.clear();
-    Navigator.of(context as BuildContext).pop();
+    Navigator.of(context).pop();
   }
 
   void openHabitEdit(int index) {
@@ -103,7 +100,7 @@ class _HomeScreen extends State<HomeScreen> {
                 ),
           ),
         ),
-        drawer: DrawerNav(),
+        drawer: const DrawerNav(),
         body: SingleChildScrollView(
             child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -251,7 +248,7 @@ class _HomeScreen extends State<HomeScreen> {
               ),
               Container(
                 width: MediaQuery.sizeOf(context).width,
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: Color(0xFF111417),
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(0),
@@ -264,7 +261,7 @@ class _HomeScreen extends State<HomeScreen> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(20, 16, 20, 0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(20, 16, 20, 0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [

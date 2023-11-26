@@ -11,9 +11,9 @@ class TaskEditingPage extends StatefulWidget{
   final Task? task;
 
   const TaskEditingPage({
-    Key? key,
+    super.key,
     this.task,
-  }) : super(key: key);
+  });
   @override
   _TaskEditingPageState createState() => _TaskEditingPageState();
 }
@@ -37,7 +37,7 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
     dbRef = FirebaseDatabase.instance.ref().child(currUser.uid).child('Tasks');
     if(widget.task == null){
       fromDate = DateTime.now();
-      toDate = DateTime.now().add(Duration(hours: 2));
+      toDate = DateTime.now().add(const Duration(hours: 2));
       prior = 1;
       allDay = false;
     }
@@ -54,18 +54,18 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
     backgroundColor: ThemeColors.background,
     appBar: AppBar(
       backgroundColor: ThemeColors.background,
-      leading:  CloseButton(),
+      leading:  const CloseButton(),
       actions: buildEditingActions(),
     ),
     body: SingleChildScrollView(
-      padding: EdgeInsets.all(12),
+      padding: const EdgeInsets.all(12),
       child: Form(
         key: _formKey,
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
             buildTitle(),
-            SizedBox(height: 12,),
+            const SizedBox(height: 12,),
             buildDateTimePickers(),
             buildPriorAllDay(),
           ],
@@ -81,14 +81,14 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
         shadowColor: ThemeColors.background,
       ),
       onPressed: saveForm,
-      icon: Icon(Icons.done),
-      label: Text('SAVE'),
+      icon: const Icon(Icons.done),
+      label: const Text('SAVE'),
     ),
   ];
 
   Widget buildTitle() => TextFormField(
-    style: TextStyle(fontSize: 24, color: Colors.white),
-    decoration: InputDecoration(
+    style: const TextStyle(fontSize: 24, color: Colors.white),
+    decoration: const InputDecoration(
       border: UnderlineInputBorder(),
       hintText: 'Add Task',
       hintStyle: TextStyle(color: Colors.grey),
@@ -210,8 +210,8 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
     required VoidCallback onClicked,
   }) =>
       ListTile(
-        title: Text(text, style: TextStyle(color: Colors.white),),
-        trailing: Icon(Icons.arrow_drop_down),
+        title: Text(text, style: const TextStyle(color: Colors.white),),
+        trailing: const Icon(Icons.arrow_drop_down),
         onTap: onClicked,
       );
 
@@ -222,7 +222,7 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
       Column(
         crossAxisAlignment:  CrossAxisAlignment.start,
         children: [
-          Text(header, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),),
+          Text(header, style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white),),
           child,
         ],
       );
@@ -252,7 +252,7 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
       items: <int>[1,2,3,4,5].map((int menuPrior) {
         return DropdownMenuItem<int>(
           value: menuPrior,
-          child: Text(menuPrior.toString(), style: TextStyle(color: Colors.white),),
+          child: Text(menuPrior.toString(), style: const TextStyle(color: Colors.white),),
         );
       }).toList(),
       onChanged: (newPrior) {
@@ -272,7 +272,7 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
           allDay = boxValue!;
         });
       },
-      side: BorderSide(
+      side: const BorderSide(
         color: Colors.white,
       ),
     );

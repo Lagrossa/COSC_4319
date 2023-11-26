@@ -24,8 +24,8 @@ class AlertboxDialog extends StatelessWidget {
         ),
       ),
       actions: [
-        MaterialButton(onPressed: save, child: Text('Save')),
-        MaterialButton(onPressed: cancel, child: Text('Cancel')),
+        MaterialButton(onPressed: save, child: const Text('Save')),
+        MaterialButton(onPressed: cancel, child: const Text('Cancel')),
       ],
     );
   }
