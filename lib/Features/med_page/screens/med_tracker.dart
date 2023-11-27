@@ -33,7 +33,7 @@ class medScreen extends StatelessWidget{
                 borderRadius: BorderRadius.circular(20),
               ),
               child: ElevatedButton(
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.orange, elevation: 0),
                 onPressed: () => Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => medsAM())
                 ),
@@ -49,7 +49,7 @@ class medScreen extends StatelessWidget{
                 borderRadius: BorderRadius.circular(20),
               ),
               child: ElevatedButton(
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.purple),
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.purple, elevation: 0),
                 onPressed: () => Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => medsPM())
                 ),

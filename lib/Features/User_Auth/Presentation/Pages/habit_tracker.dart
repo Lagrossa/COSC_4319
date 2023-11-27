@@ -26,7 +26,8 @@ class _HabitScreenState extends State<HabitScreen> {
   late Query dbQuery;
   late TextEditingController habitNameController;
   String habitName = '';
-
+  int numCompleted = 0;
+  int len = 0;
   /*
   Potentially:
   Habit Groups?
@@ -72,7 +73,7 @@ Widget listHabits({required Map habitList}){
                                 name: habitList['HabitName'],
                                 completed: habitList['Completed'],
                                 onChanged: (value) => tapCheckBox(value, habitList),
-                                settingsTap: (context) => null,
+                                settingsTap: (context) => editExistingHabit(habitList),
                                 deleteTap: (context) => dbRef.child(habitList['key']).remove(),
                                 date: habitList['SavedDate'],                               
                               );
@@ -81,77 +82,73 @@ Widget listHabits({required Map habitList}){
   void tapCheckBox(bool? val, Map habitList) {
     setState(() {
       dbRef.child(habitList['key']).child('Completed').set(val);
-    });
+      
+    });    
     updatePercent(habitList);
   }
 
 void updatePercent(Map habitList) {
-    int numCompleted = 0;
-    int len = 0;
-    habitList.forEach((key, value) {      
-      numCompleted = key.child("Completed").value == true ? numCompleted + 1 : numCompleted;
+    numCompleted = 0;
+    len = 0;
+    dbRef.get().then((snapshot) {
+  for (final habit in snapshot.children) {
+    numCompleted = habit.child("Completed").value == true ? numCompleted + 1 : numCompleted;
     len = len + 1;
-    });
-        
-    percentCompleted = numCompleted > 0 ? numCompleted / len : 0;
-    print(percentCompleted);
+    percentCompleted = numCompleted > 0 ? numCompleted / len : 0;    
+  }
+}
+);    
   }
 
-/*
 
-  void saveNewHabit() {
-    setState(() {
-      habitList.add([newHabitNameController.text, false]);
-    });
-    newHabitNameController.clear();
-    Navigator.of(context).pop();
-    updatePercent();
-  }
 
-  void cancelHabitBox() {
-    newHabitNameController.clear();
-    Navigator.of(context).pop();
-  }
 
-  void openHabitEdit(int index) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertboxDialog(
-          controller: newHabitNameController,
-          hintText: habitList[index][0],
-          save: () => saveExistingHabit(index),
-          cancel: cancelHabitBox,
-        );
-      },
-    );
-  }
 
-  void saveExistingHabit(int index) {
-    setState(() {
-      habitList[index][0] = newHabitNameController.text;
-    });
-    Navigator.pop(context);
-    newHabitNameController.clear();
-  }
-
-  void deleteHabit(int index) {
-    setState(() {
-      habitList.removeAt(index);
-    });
-    updatePercent();
-  }  
-*/
+Future<String?> editExistingHabit(Map habitList) => showDialog<String>(
+    context: context,
+    builder: (context) => AlertDialog(
+      backgroundColor: ThemeColors.secondary,
+      title: Text('Edit Habit Name', style: TextStyle(color: ThemeColors.white),),
+      content: TextField(
+        autofocus: true,
+        style: const TextStyle(color: const Color(0xFF111417)),
+        decoration: InputDecoration( 
+                   
+          hintText:  habitList['HabitName'].toString(),
+          fillColor: ThemeColors.white,
+          
+        ),
+        controller: habitNameController,
+        onSubmitted: (_) {
+          Navigator.of(context).pop(habitNameController.text);
+          habitNameController.clear();
+        },
+      ),
+      actions: [
+        TextButton(
+          child: Text('Submit'),
+          onPressed: () {
+            dbRef.child(habitList['key']).child('HabitName').set(habitNameController.text);
+            Navigator.of(context).pop(habitNameController.text);
+            habitNameController.clear();
+          },
+        ),
+      ],
+    ),
+  );  
 
 Future<String?> createHabit() => showDialog<String>(
     context: context,
     builder: (context) => AlertDialog(
       backgroundColor: ThemeColors.secondary,
-      title: Text('Add Habit'),
+      title: Text('Add Habit', style: TextStyle(color: ThemeColors.white),),
       content: TextField(
         autofocus: true,
-        decoration: InputDecoration(
+        style: const TextStyle(color: const Color(0xFF111417)),
+        decoration: InputDecoration(          
           hintText: 'Enter Habit',
+          fillColor: ThemeColors.white,
+          
         ),
         controller: habitNameController,
         onSubmitted: (_) {
@@ -169,8 +166,7 @@ Future<String?> createHabit() => showDialog<String>(
         ),
       ],
     ),
-  );
-  
+  );  
 
   @override
   Widget build(BuildContext context) {
@@ -211,7 +207,7 @@ Future<String?> createHabit() => showDialog<String>(
               animateFromLastPercent: true,
               animationDuration: 1000,
               backgroundColor: ThemeColors.secondary,
-              progressColor: ThemeColors.tertiary,
+              progressColor: ThemeColors.button,
               radius: 90,
               lineWidth: 10,
               percent: percentCompleted,
