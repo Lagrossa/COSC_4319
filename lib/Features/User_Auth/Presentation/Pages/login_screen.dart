@@ -21,10 +21,13 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final FirebaseAuthService _auth = FirebaseAuthService();
-  final GlobalKey<FormState> _key = GlobalKey<FormState>();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final FirebaseAuthService _auth =
+      FirebaseAuthService(); //Authentication service
+  final GlobalKey<FormState> _key = GlobalKey<FormState>(); //Validation key
+  final TextEditingController _emailController =
+      TextEditingController(); //Email auth
+  final TextEditingController _passwordController =
+      TextEditingController(); //Password auth
   String errorMess = '';
 
   @override
@@ -50,6 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Stack(
           children: [
             SvgPicture.asset(
+              //background
               'lib/assets/layered-waves-haikei.svg',
               semanticsLabel: 'Waves',
               fit: BoxFit.fill,
@@ -90,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Text("Log In",
+                                  Text("Log In", //Title
                                       style: TextStyle(
                                         fontSize: FlutterFlowTheme.of(context)
                                             .displaySmall
@@ -115,7 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Text(
-                                      "Log In Below",
+                                      "Log In Below", //Title
                                       style: FlutterFlowTheme.of(context)
                                           .titleMedium,
                                     ),
@@ -123,16 +127,17 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                               Padding(
-                                padding:
-                                    const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0, 20, 0, 0),
                                 child: TextFormField(
+                                  //Email Text/Auth/Validation
                                   controller: _emailController,
                                   validator: validateEmail,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelText: "Email Address",
-                                    labelStyle:
-                                        const TextStyle(color: ThemeColors.white),
+                                    labelStyle: const TextStyle(
+                                        color: ThemeColors.white),
                                     hintText: "Enter your email...",
                                     hintStyle: TextStyle(
                                       fontSize: FlutterFlowTheme.of(context)
@@ -189,16 +194,17 @@ class _LoginScreenState extends State<LoginScreen> {
                                 ),
                               ),
                               Padding(
-                                padding:
-                                    const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0, 20, 0, 0),
                                 child: TextFormField(
+                                  //Password Text/Auth/Validation
                                   controller: _passwordController,
                                   validator: validatePassword,
                                   obscureText: true,
                                   decoration: InputDecoration(
                                     labelText: "Password",
-                                    labelStyle:
-                                        const TextStyle(color: ThemeColors.white),
+                                    labelStyle: const TextStyle(
+                                        color: ThemeColors.white),
                                     hintText: "Enter your password...",
                                     hintStyle: TextStyle(
                                       fontSize: FlutterFlowTheme.of(context)
@@ -269,9 +275,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0, 20, 0, 20),
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            0, 20, 0, 20),
                                     child: FFButtonWidget(
+                                      //button to go to signup
                                       onPressed: () async {
                                         Navigator.pushAndRemoveUntil(
                                             context,
@@ -286,11 +294,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                       options: FFButtonOptions(
                                         width: 170,
                                         height: 40,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0, 0, 0, 0),
-                                        iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
-                                                0, 0, 0, 0),
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(0, 0, 0, 0),
+                                        iconPadding: const EdgeInsetsDirectional
+                                            .fromSTEB(0, 0, 0, 0),
                                         color: const Color(0x001A1F24),
                                         textStyle: TextStyle(
                                           fontSize: FlutterFlowTheme.of(context)
@@ -320,6 +327,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                     ),
                                   ),
                                   FFButtonWidget(
+                                    //sign up button
                                     onPressed: () async {
                                       if (_key.currentState!.validate()) {
                                         try {
@@ -329,25 +337,14 @@ class _LoginScreenState extends State<LoginScreen> {
                                           errorMess = error.message!;
                                         }
                                       }
-                                    }
-                                    /*
-              GoRouter.of(context).prepareAuthEvent();
-              final user = await authManager.signInWithEmail(
-                context,
-                _model.emailAddressLoginController.text,
-                _model.passwordLoginController.text,
-              );
-              if (user == null) {
-                return;
-              }
-              context.goNamedAuth('MY_Card', context.mounted);*/
-                                    ,
+                                    },
                                     text: "Log In",
                                     options: FFButtonOptions(
                                       width: 120,
                                       height: 50,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 0),
+                                      padding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0, 0, 0, 0),
                                       iconPadding:
                                           const EdgeInsetsDirectional.fromSTEB(
                                               0, 0, 0, 0),
@@ -374,83 +371,9 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
   }
-  // Widget build(BuildContext context) {
-  //   return Scaffold(
-  //     appBar: AppBar(
-  //       backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-  //       title: Text("Login"),
-  //     ),
-  //     body: Center(
-  //       child: Padding(
-  //         padding: const EdgeInsets.symmetric(horizontal: 15),
-  //         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-  //           Text(
-  //             "Login",
-  //             style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
-  //           ),
-  //           SizedBox(
-  //             height: 30,
-  //           ),
-  //           FormContainerWidget(
-  //             controller: _emailController,
-  //             hintText: "Email",
-  //             isPasswordField: false,
-  //           ),
-  //           SizedBox(
-  //             height: 10,
-  //           ),
-  //           FormContainerWidget(
-  //             controller: _passwordController,
-  //             hintText: "Password",
-  //             isPasswordField: true,
-  //           ),
-  //           SizedBox(
-  //             height: 30,
-  //           ),
-  //           GestureDetector(
-  //             onTap: _signIn,
-  //             child: Container(
-  //                 width: double.infinity,
-  //                 height: 45,
-  //                 decoration: BoxDecoration(
-  //                     color: Colors.blue,
-  //                     borderRadius: BorderRadius.circular(10)),
-  //                 child: Center(
-  //                     child: Text("Login",
-  //                         style: TextStyle(
-  //                             color: Colors.white,
-  //                             fontWeight: FontWeight.bold)))),
-  //           ),
-  //           SizedBox(
-  //             height: 20,
-  //           ),
-  //           Row(
-  //             mainAxisAlignment: MainAxisAlignment.center,
-  //             children: [
-  //               Text("Don't have an account?"),
-  //               SizedBox(
-  //                 width: 5,
-  //               ),
-  //               GestureDetector(
-  //                 onTap: () {
-  // Navigator.pushAndRemoveUntil(
-  //     context,
-  //     MaterialPageRoute(builder: (context) => SignUpScreen()),
-  //     (route) => false);
-  //                 },
-  //                 child: Text("Sign Up",
-  //                     style: TextStyle(
-  //                         color: Colors.blue, fontWeight: FontWeight.bold)),
-  //               )
-  //             ],
-  //           )
-  //         ]),
-  //       ),
-  //     ),
-  //   );
-  // }
 
   void _signIn() async {
+    //sign up function
     String email = _emailController.text;
     String password = _passwordController.text;
 
@@ -467,6 +390,7 @@ class _LoginScreenState extends State<LoginScreen> {
 }
 
 String? validateEmail(String? InEmail) {
+  //Email valid function
   if (InEmail == null || InEmail.isEmpty) return 'E-mail address required.';
 
   // RegExp regexpress = RegExp(r'\w+@\w+\.\w+');
@@ -476,6 +400,7 @@ String? validateEmail(String? InEmail) {
 }
 
 String? validatePassword(String? InPassword) {
+  //Password valid function
   if (InPassword == null || InPassword.isEmpty) return 'Password is required.';
 
   // RegExp regexpress =

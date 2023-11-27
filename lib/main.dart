@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
           textTheme: const TextTheme(
+        //background
         displaySmall: TextStyle(color: ThemeColors.secondary),
         displayLarge: TextStyle(color: ThemeColors.secondary),
         displayMedium: TextStyle(color: ThemeColors.secondary),
@@ -59,6 +60,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: false,
       ),*/
       routes: {
+        //routes to diff pages
         '/': (context) => LoadScreen(child: LoginScreen()),
         '/login': (context) => LoginScreen(),
         '/signUp': (context) => SignUpScreen(),
@@ -66,7 +68,7 @@ class MyApp extends StatelessWidget {
         '/trackers': (context) => TrackersDirectory(),
         '/habits': (context) => HabitScreen(),
         '/tasks': (context) => taskScreen(),
-        '/meds' : (context) => medScreen(),
+        '/meds': (context) => medScreen(),
       },
     );
   }

@@ -16,10 +16,13 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  final FirebaseAuthService _auth = FirebaseAuthService();
-  final GlobalKey<FormState> _key = GlobalKey<FormState>();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final FirebaseAuthService _auth =
+      FirebaseAuthService(); //Authentication service
+  final GlobalKey<FormState> _key = GlobalKey<FormState>(); //key for validation
+  final TextEditingController _emailController =
+      TextEditingController(); //controller for email
+  final TextEditingController _passwordController =
+      TextEditingController(); //controller for password
   String errorMess = '';
 
   @override
@@ -45,6 +48,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         child: Stack(
           children: [
             SvgPicture.asset(
+              //background
               'lib/assets/layered-waves-haikei.svg',
               semanticsLabel: 'Waves',
               fit: BoxFit.fill,
@@ -66,6 +70,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Image.asset(
+                            //ADDvisor logo
                             'lib/assets/addvisor_logo2.png',
                             width: 170,
                             height: 60,
@@ -85,7 +90,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Text("Sign Up",
+                                  Text("Sign Up", //title
                                       style: TextStyle(
                                         fontSize: FlutterFlowTheme.of(context)
                                             .displaySmall
@@ -110,6 +115,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Text(
+                                      //title
                                       "Sign Up Below",
                                       style: FlutterFlowTheme.of(context)
                                           .titleMedium,
@@ -121,8 +127,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0, 20, 0, 0),
                                 child: TextFormField(
+                                  //email text field
                                   controller: _emailController,
-                                  validator: validateEmail,
+                                  validator: validateEmail, //validate email
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelText: "Email Address",
@@ -187,11 +194,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0, 20, 0, 0),
                                 child: TextFormField(
+                                  //password text field
                                   controller: _passwordController,
-                                  validator: validatePassword,
+                                  validator:
+                                      validatePassword, //validate password
                                   obscureText: true,
                                   decoration: InputDecoration(
-                                    errorMaxLines: 3,
+                                    errorMaxLines: 2,
                                     labelText: "Password",
                                     labelStyle: const TextStyle(
                                         color: ThemeColors.white),
@@ -255,7 +264,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 child: Center(
                                   child: Text(
                                     errorMess,
-                                    style: const TextStyle(color: Colors.red),
+                                    //style: const TextStyle(color: Colors.red),
+                                    selectionColor: Colors.red,
                                   ),
                                 ),
                               ),
@@ -269,6 +279,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         const EdgeInsetsDirectional.fromSTEB(
                                             0, 20, 0, 20),
                                     child: FFButtonWidget(
+                                      //go to login screen button(already have account)
                                       onPressed: () async {
                                         Navigator.pushAndRemoveUntil(
                                             context,
@@ -316,13 +327,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     ),
                                   ),
                                   FFButtonWidget(
+                                    //sign up button
                                     onPressed: () async {
                                       if (_key.currentState!.validate()) {
                                         try {
                                           _signUp();
-                                          errorMess = '';
-                                        } on FirebaseAuthException catch (error) {
-                                          errorMess = error.message!;
+                                        } on FirebaseAuthException catch (e) {
+                                          print("object");
+                                          if (e.code ==
+                                              'email-already-in-use') {
+                                            errorMess = "Email already in use";
+                                          }
+                                        } catch (e) {
+                                          print(e);
                                         }
                                       }
                                     },
@@ -361,6 +378,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   void _signUp() async {
+    //function for sign up, calls function from firebase_auth_sevice
     String email = _emailController.text;
     String password = _passwordController.text;
 
@@ -380,6 +398,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 }
 
 String? validateEmail(String? InEmail) {
+  //validate email function
   if (InEmail == null || InEmail.isEmpty) return 'E-mail address required.';
 
   RegExp regexpress = RegExp(r'\w+@\w+\.\w+');
@@ -389,6 +408,7 @@ String? validateEmail(String? InEmail) {
 }
 
 String? validatePassword(String? InPassword) {
+  //validate password function
   if (InPassword == null || InPassword.isEmpty) return 'Password is required.';
 
   RegExp regexpress =
