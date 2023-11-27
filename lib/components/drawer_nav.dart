@@ -48,10 +48,10 @@ class DrawerNav extends StatelessWidget {
             ),
             ListTile(
               leading: Icon(Icons.event_repeat, color: Colors.white,),
-              title: Text('Trackers', style: TextStyle(color: Colors.white),),
+              title: Text('Habits', style: TextStyle(color: Colors.white),),
               onTap: () {
-                Navigator.pushNamed(context, "/trackers");
-                AppNavBar.currentScreen = Screen.Trackers;
+                Navigator.pushNamed(context, "/habits");
+                AppNavBar.currentScreen = Screen.Habits;
               },
             ),
             ListTile(

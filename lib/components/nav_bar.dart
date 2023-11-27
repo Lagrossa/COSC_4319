@@ -2,7 +2,7 @@ import 'package:addvisor/components/themeColors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
-enum Screen { Login, Home, Tasks, Trackers, Meds }
+enum Screen { Login, Home, Tasks, Habits, Meds }
 
 class AppNavBar extends StatelessWidget {
   const AppNavBar({super.key});
@@ -16,7 +16,7 @@ class AppNavBar extends StatelessWidget {
         return 1;
       case Screen.Home:
         return 2;
-      case Screen.Trackers:
+      case Screen.Habits:
         return 3;
       case Screen.Meds:
         return 4;
@@ -32,7 +32,7 @@ class AppNavBar extends StatelessWidget {
       case 2:
         return Screen.Home;
       case 3:
-        return Screen.Trackers;
+        return Screen.Habits;
       case 4:
         return Screen.Meds;
       default:
@@ -68,7 +68,7 @@ class AppNavBar extends StatelessWidget {
                 Navigator.pushNamed(context, "/home");
                 break;
               case 3:
-                Navigator.pushNamed(context, "/trackers");
+                Navigator.pushNamed(context, "/habits");
                 break;
               case 4:
                 Navigator.pushNamed(context, "/meds");
@@ -79,7 +79,7 @@ class AppNavBar extends StatelessWidget {
             GButton(icon: Icons.settings, text: "Settings"),
             GButton(icon: Icons.calendar_month, text: "Tasks"),
             GButton(icon: Icons.home, text: "Home"),
-            GButton(icon: Icons.watch, text: "Trackers"),
+            GButton(icon: Icons.watch, text: "Habits"),
             GButton(icon: Icons.medical_services_outlined, text: "Meds",),
           ],
         ),
