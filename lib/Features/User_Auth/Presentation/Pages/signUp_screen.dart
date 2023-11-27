@@ -118,16 +118,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 ),
                               ),
                               Padding(
-                                padding:
-                                    const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0, 20, 0, 0),
                                 child: TextFormField(
                                   controller: _emailController,
                                   validator: validateEmail,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     labelText: "Email Address",
-                                    labelStyle:
-                                        const TextStyle(color: ThemeColors.white),
+                                    labelStyle: const TextStyle(
+                                        color: ThemeColors.white),
                                     hintText: "Enter your email...",
                                     hintStyle: TextStyle(
                                       fontSize: FlutterFlowTheme.of(context)
@@ -184,16 +184,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 ),
                               ),
                               Padding(
-                                padding:
-                                    const EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0, 20, 0, 0),
                                 child: TextFormField(
                                   controller: _passwordController,
                                   validator: validatePassword,
                                   obscureText: true,
                                   decoration: InputDecoration(
+                                    errorMaxLines: 3,
                                     labelText: "Password",
-                                    labelStyle:
-                                        const TextStyle(color: ThemeColors.white),
+                                    labelStyle: const TextStyle(
+                                        color: ThemeColors.white),
                                     hintText: "Enter your password...",
                                     hintStyle: TextStyle(
                                       fontSize: FlutterFlowTheme.of(context)
@@ -264,8 +265,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0, 20, 0, 20),
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            0, 20, 0, 20),
                                     child: FFButtonWidget(
                                       onPressed: () async {
                                         Navigator.pushAndRemoveUntil(
@@ -281,11 +283,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       options: FFButtonOptions(
                                         width: 170,
                                         height: 40,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0, 0, 0, 0),
-                                        iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
-                                                0, 0, 0, 0),
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(0, 0, 0, 0),
+                                        iconPadding: const EdgeInsetsDirectional
+                                            .fromSTEB(0, 0, 0, 0),
                                         color: const Color(0x001A1F24),
                                         textStyle: TextStyle(
                                           fontSize: FlutterFlowTheme.of(context)
@@ -324,14 +325,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           errorMess = error.message!;
                                         }
                                       }
-                                    }                                
-                                    ,
+                                    },
                                     text: "Sign Up",
                                     options: FFButtonOptions(
                                       width: 120,
                                       height: 50,
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0, 0, 0, 0),
+                                      padding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              0, 0, 0, 0),
                                       iconPadding:
                                           const EdgeInsetsDirectional.fromSTEB(
                                               0, 0, 0, 0),
@@ -393,7 +394,7 @@ String? validatePassword(String? InPassword) {
   RegExp regexpress =
       RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
   if (!regexpress.hasMatch(InPassword)) {
-    return "Password must be at least 8 character which includes: an uppercase letter, number, and a special character.";
+    return "Password must be at least 8 characters which includes: uppercase letter, number, and a special character.";
   }
 
   return null;
