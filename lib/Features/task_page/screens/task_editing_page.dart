@@ -74,6 +74,7 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
     ),
   );
 
+  //save button in appbar
   List<Widget> buildEditingActions() => [
     ElevatedButton.icon(
       style: ElevatedButton.styleFrom(
@@ -86,6 +87,8 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
     ),
   ];
 
+  //text field to enter name
+  //validate that the field is not empty
   Widget buildTitle() => TextFormField(
     style: const TextStyle(fontSize: 24, color: Colors.white),
     decoration: const InputDecoration(
@@ -106,6 +109,7 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
     ],
   );
 
+  //build the start time DateTime picker
   Widget buildFrom() => buildHeader(
     header: 'FROM',
     child: Row(
@@ -127,6 +131,7 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
     ),
   );
 
+  //build the end time DateTime picker
   Widget buildTo() => buildHeader(
     header: 'TO',
     child: Row(
@@ -148,6 +153,8 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
     ),
   );
 
+  //select start date and time
+  //requires bool variable to determine if date or time is being picked
   Future pickFromDateTime({required bool pickDate}) async {
     final date = await pickDateTime(
         fromDate,
@@ -162,6 +169,8 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
     setState(() => fromDate = date);
   }
 
+  //select end date and time
+  //requires bool variable to determine if date or time is being picked
   Future pickToDateTime({required bool pickDate}) async {
     final date = await pickDateTime(
       toDate,
@@ -173,6 +182,7 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
     setState(() => toDate = date);
   }
 
+  //show either a calendar to pick date or a clock to pick time
   Future<DateTime?> pickDateTime(
       DateTime initialDate, {
         required bool pickDate,
@@ -205,6 +215,7 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
     }//else
   }
 
+  //drop down field used in DateTime pickers
   Widget buildDropdownField({
     required String text,
     required VoidCallback onClicked,
@@ -227,6 +238,7 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
         ],
       );
 
+  //build the priority and isAllDay selectors
   Widget buildPriorAllDay() => Row(
     children: [
       Expanded(
@@ -245,6 +257,8 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
     ],
   );
 
+  //drop down for priority
+  //works differently than previous dropdown fields, so needs it's own function
   Widget priorDropdown() =>
     DropdownButton<int>(
       value: prior,
@@ -262,6 +276,7 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
       },
     );
 
+  //check box for isAllDay
   Widget allDayCheck() =>
     Checkbox(
       value: allDay,
@@ -277,6 +292,7 @@ class _TaskEditingPageState extends State<TaskEditingPage>{
       ),
     );
 
+  //only if valid, save data to database
   Future saveForm() async {
     final isValid = _formKey.currentState!.validate();
     if(isValid) {

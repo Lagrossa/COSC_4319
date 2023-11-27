@@ -18,6 +18,7 @@ class medsPMState extends State<medsPM>{
   late TextEditingController medNameController;
   String medicationName = '';
 
+  //direct refference and query to meds/PM
   @override
   void initState(){
     currUser = FirebaseAuth.instance.currentUser!;

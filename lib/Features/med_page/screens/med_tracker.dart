@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 
 class medScreen extends StatelessWidget{
 
+  //main page for medication. Simply direct to am or pm medication sections
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -24,7 +25,7 @@ class medScreen extends StatelessWidget{
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
+            Container(//am medication button
               height: 100,
               width: 300,
               decoration: BoxDecoration(
@@ -40,7 +41,7 @@ class medScreen extends StatelessWidget{
               ),
             ),
             const SizedBox(height: 70,),
-            Container(
+            Container(//pm medication button
               height: 100,
               width: 300,
               decoration: BoxDecoration(

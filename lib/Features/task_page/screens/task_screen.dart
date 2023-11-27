@@ -23,6 +23,7 @@ class taskScreenState extends State<taskScreen>{
   late User currUser;
 
 
+  //direct database reference to the tasks section
   @override
   void initState(){
     currUser = FirebaseAuth.instance.currentUser!;
@@ -41,6 +42,7 @@ class taskScreenState extends State<taskScreen>{
         backgroundColor: ThemeColors.background,
         title: const Text('Tasks'),
         centerTitle: true,
+        //button to go to remove task screen
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.remove, color: Colors.white,),
@@ -52,6 +54,7 @@ class taskScreenState extends State<taskScreen>{
       ),
       drawer: const DrawerNav(),
       body: Column(
+        //buttons to change view
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -77,6 +80,7 @@ class taskScreenState extends State<taskScreen>{
             ],
           ),
           Expanded(
+            //read in data with streambuilder then place data in sfcalendar
             child: StreamBuilder(
               stream: dbRef.orderByKey().onValue,
               builder: (context, snapshot){
@@ -134,6 +138,7 @@ class taskScreenState extends State<taskScreen>{
           ),
         ],
       ),
+      //add task screen
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue,
         onPressed: () => Navigator.of(context).push(
