@@ -337,7 +337,8 @@ class _LoginScreenState extends State<LoginScreen> {
                                           errorMess = error.message!;
                                         }
                                       }
-                                    },
+                                    }
+                                    ,
                                     text: "Log In",
                                     options: FFButtonOptions(
                                       width: 120,

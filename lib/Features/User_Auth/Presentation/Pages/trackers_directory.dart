@@ -136,7 +136,7 @@ class TrackersDirectory extends StatelessWidget {
                                 fontFamily: 'Roboto'),
                           ),
                           onPressed: () {
-                            //Navigator.pushNamed(context, "/habits");
+                            Navigator.pushNamed(context, "/meds");
                           },
                         ),
                       )),

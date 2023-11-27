@@ -5,8 +5,10 @@ import 'package:addvisor/components/habitBox.dart';
 import 'package:addvisor/components/nav_bar.dart';
 import 'package:addvisor/components/themeColors.dart';
 import 'package:easy_date_timeline/easy_date_timeline.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterflow_ui/flutterflow_ui.dart';
+import 'package:sqflite/sqflite.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -296,6 +298,7 @@ class _HomeScreen extends State<HomeScreen> {
                                 onChanged: (value) => tapCheckBox(value, index),
                                 settingsTap: (context) => openHabitEdit(index),
                                 deleteTap: (context) => deleteHabit(index),
+                                date: DateTime.now().toString(),                            
                               );
                             }),
                       ),

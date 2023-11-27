@@ -7,6 +7,10 @@ import 'package:addvisor/components/themeColors.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_database/ui/firebase_animated_list.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutterflow_ui/flutterflow_ui.dart';
 
 class HabitScreen extends StatefulWidget {
   const HabitScreen({super.key});
@@ -17,12 +21,11 @@ class HabitScreen extends StatefulWidget {
 
 class _HabitScreenState extends State<HabitScreen> {
   double percentCompleted = 0;
-  List habitList = [
-    /* EXAMPLES..
-    ["Practice on Leetcode", false],
-    ["Daily Workout", false],
-    ["Do Homework", false],*/
-  ];
+  late User currUser;
+  late DatabaseReference dbRef;
+  late Query dbQuery;
+  late TextEditingController habitNameController;
+  String habitName = '';
 
   /*
   Potentially:
@@ -49,28 +52,52 @@ class _HabitScreenState extends State<HabitScreen> {
 
   */
 
-  void tapCheckBox(bool? val, int index) {
+  @override
+  void initState(){
+    currUser = FirebaseAuth.instance.currentUser!;
+    dbRef = FirebaseDatabase.instance.ref().child(currUser.uid).child('Habits');
+    dbQuery = FirebaseDatabase.instance.ref().child(currUser.uid).child('Habits');
+    habitNameController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose(){
+    habitNameController.dispose();
+    super.dispose();
+  }
+
+Widget listHabits({required Map habitList}){
+    return HabitBox(
+                                name: habitList['HabitName'],
+                                completed: habitList['Completed'],
+                                onChanged: (value) => tapCheckBox(value, habitList),
+                                settingsTap: (context) => null,
+                                deleteTap: (context) => dbRef.child(habitList['key']).remove(),
+                                date: habitList['SavedDate'],                               
+                              );
+  }
+
+  void tapCheckBox(bool? val, Map habitList) {
     setState(() {
-      habitList[index][1] = val;
+      dbRef.child(habitList['key']).child('Completed').set(val);
     });
-    updatePercent();
+    updatePercent(habitList);
   }
 
-  final newHabitNameController = TextEditingController();
-
-  void createHabit() {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertboxDialog(
-          controller: newHabitNameController,
-          hintText: 'Enter Habit Name!',
-          save: saveNewHabit,
-          cancel: cancelHabitBox,
-        );
-      },
-    );
+void updatePercent(Map habitList) {
+    int numCompleted = 0;
+    int len = 0;
+    habitList.forEach((key, value) {      
+      numCompleted = key.child("Completed").value == true ? numCompleted + 1 : numCompleted;
+    len = len + 1;
+    });
+        
+    percentCompleted = numCompleted > 0 ? numCompleted / len : 0;
+    print(percentCompleted);
   }
+
+/*
 
   void saveNewHabit() {
     setState(() {
@@ -113,17 +140,37 @@ class _HabitScreenState extends State<HabitScreen> {
       habitList.removeAt(index);
     });
     updatePercent();
-  }
+  }  
+*/
 
-  void updatePercent() {
-    int numCompleted = 0;
-    for (int x = 0; x < habitList.length; x++) {
-      numCompleted = habitList[x][1] == true ? numCompleted + 1 : numCompleted;
-    }
-    percentCompleted =
-        habitList.isNotEmpty ? numCompleted / habitList.length : 0;
-    print(percentCompleted);
-  }
+Future<String?> createHabit() => showDialog<String>(
+    context: context,
+    builder: (context) => AlertDialog(
+      backgroundColor: ThemeColors.secondary,
+      title: Text('Add Habit'),
+      content: TextField(
+        autofocus: true,
+        decoration: InputDecoration(
+          hintText: 'Enter Habit',
+        ),
+        controller: habitNameController,
+        onSubmitted: (_) {
+          Navigator.of(context).pop(habitNameController.text);
+          habitNameController.clear();
+        },
+      ),
+      actions: [
+        TextButton(
+          child: Text('Submit'),
+          onPressed: () {
+            Navigator.of(context).pop(habitNameController.text);
+            habitNameController.clear();
+          },
+        ),
+      ],
+    ),
+  );
+  
 
   @override
   Widget build(BuildContext context) {
@@ -134,9 +181,25 @@ class _HabitScreenState extends State<HabitScreen> {
       ),
       drawer: const DrawerNav(),
       backgroundColor: ThemeColors.background,
-      floatingActionButton: AddTrackerActionButton(
-        onPressed: () => createHabit(),
-      ),
+      floatingActionButton: FloatingActionButton(
+      backgroundColor: ThemeColors.button,
+      onPressed: () async{
+          final habitName = await createHabit();
+          if(habitName == null || habitName.isEmpty) return;
+
+          String savedDate = DateFormat('yyy-MM-dd').format(DateTime.now());
+          
+          final addedHabit = <String, dynamic>{
+            'HabitName' : habitName,
+            'Completed' : false,
+            'SavedDate' : savedDate,
+            'Timestamp' : DateTime.now().toUtc().millisecondsSinceEpoch, 
+          };
+          dbRef.push().set(addedHabit);
+        },
+      child: const Icon(Icons.add),
+      
+    ),
       body: Flex(direction: Axis.vertical, children: [
         Padding(
           padding: const EdgeInsets.all(8.0),
@@ -160,34 +223,35 @@ class _HabitScreenState extends State<HabitScreen> {
             ),
           ),
         ),
-        Padding(
+        /*Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
             child: LinearPercentIndicator(
+              barRadius: const Radius.circular(16),
               animation: true,
               animateFromLastPercent: true,
               animationDuration: 1000,
               curve: Curves.easeInOutCirc,
               backgroundColor: ThemeColors.secondary,
-              progressColor: ThemeColors.tertiary,
+              progressColor: ThemeColors.button,
               percent: percentCompleted,
               lineHeight: 15,
             ),
           ),
-        ),
+        ),*/
         Expanded(
           child: SizedBox(
-            child: ListView.builder(
-                itemCount: habitList.length,
-                itemBuilder: (context, index) {
-                  return HabitBox(
-                    name: habitList[index][0],
-                    completed: habitList[index][1],
-                    onChanged: (value) => tapCheckBox(value, index),
-                    settingsTap: (context) => openHabitEdit(index),
-                    deleteTap: (context) => deleteHabit(index),
-                  );
-                }),
+            child:  Container(
+        height: double.infinity,
+        child: FirebaseAnimatedList(
+          query: dbQuery,
+          itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index){
+            Map habitList = snapshot.value as Map;
+            habitList['key'] = snapshot.key;
+            return listHabits(habitList: habitList);
+          },
+        ),
+      ),
           ),
         ),
       ]),

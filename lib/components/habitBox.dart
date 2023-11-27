@@ -10,6 +10,7 @@ class HabitBox extends StatelessWidget {
   final Function(bool?) onChanged;
   final Function(BuildContext)? settingsTap;
   final Function(BuildContext)? deleteTap;
+  final String date;
 
   const HabitBox({
     super.key,
@@ -18,10 +19,13 @@ class HabitBox extends StatelessWidget {
     required this.onChanged,
     required this.settingsTap,
     required this.deleteTap,
+    required this.date,
   });
 
   @override
   Widget build(BuildContext context) {
+
+    
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Slidable(
@@ -91,21 +95,13 @@ class HabitBox extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Text(
-                    "11/15/2023",
+                    date,
                     textAlign: TextAlign.end,
                     style: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Lexend',
                           color: ThemeColors.button,
                         ),
-                  ),
-                  /*Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 4, 0, 0),
-                    child: Text(
-                      "3h ago",
-                      textAlign: TextAlign.end,
-                      style: FlutterFlowTheme.of(context).bodyMedium,
-                    ),
-                  ),*/
+                  ),                  
                 ],
               ),
             ),
