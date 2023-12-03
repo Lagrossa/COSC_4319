@@ -16,3 +16,6 @@ This is done so with:
 These functions can be found on other applications, but never found all in one app. Our goal is to consolidate these functions into one package. 
 
 Our system requires an email and for the user to create a password with at least 8 characters, an uppercase, a number, and a special character
+
+Note: When running this project on Android Studio, an error pops up stating "One or more plugins require a higher Android NDK version." We have not managed to fix this and the fix the compiler recomends does not seem to work.
+  However, the program still runs when this message pops up
